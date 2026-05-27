@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>통합체육 수업 세안 | 지적장애 학생 통합 | 2022 개정 교육과정</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1117;--surface:#181c27;--surface2:#1e2436;--surface3:#242840;
+  --border:#2a3048;--text:#e8eaf0;--muted:#7b84a0;
+  --accent:#4f8fff;--accent2:#6c63ff;
+  /* 통합체육 전용 컬러 */
+  --inc:#00c9b1;       /* 통합(Integration) — 청록 */
+  --inc-bg:rgba(0,201,177,.09);
+  --peer:#a78bfa;      /* 또래지원(Peer) — 보라 */
+  --peer-bg:rgba(167,139,250,.09);
+  --lre:#f59e0b;       /* LRE — 앰버 */
+  --lre-bg:rgba(245,158,11,.09);
+  --step:#38bdf8;      /* S.T.E.P — 스카이블루 */
+  --step-bg:rgba(56,189,248,.09);
+  --gen:#34d399;       /* 비장애(General) — 에메랄드 */
+  --gen-bg:rgba(52,211,153,.09);
+  --id:#fb923c;        /* 지적장애(ID) — 오렌지 */
+  --id-bg:rgba(251,146,60,.09);
+  --safe:#ef4444;--safe-bg:rgba(239,68,68,.09);
+  --pbs:#a78bfa;
+  --r:12px;--rs:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:14px}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(15,17,23,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:0;overflow-x:auto;height:50px;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;white-space:nowrap;margin-right:16px;color:var(--inc)}
+.nav-item{flex-shrink:0;padding:0 9px;height:50px;display:flex;align-items:center;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
+.nav-item:hover{color:var(--text);border-bottom-color:var(--inc)}
+.nav-actions{margin-left:auto;display:flex;gap:6px;flex-shrink:0;padding-left:10px}
+.btn-sm{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-family:inherit;transition:all .2s}
+.btn-sm:hover{background:var(--surface2);color:var(--text)}
+.btn-p{background:var(--inc);border-color:var(--inc);color:#fff}
+.btn-p:hover{background:#00b09a}
+
+/* ── LAYOUT ── */
+.container{max-width:1200px;margin:0 auto;padding:72px 20px 100px}
+.section{margin-bottom:60px;scroll-margin-top:60px}
+.section-label{font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:5px}
+.section-title{font-family:'Noto Serif KR',serif;font-size:clamp(18px,3vw,23px);font-weight:700;color:var(--text);margin-bottom:18px;padding-bottom:11px;border-bottom:1px solid var(--border)}
+.sub-title{font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text)}
+
+/* ── BADGE ── */
+.badge{display:inline-flex;align-items:center;font-size:10px;padding:3px 9px;border-radius:20px;font-weight:700;letter-spacing:.04em}
+.b-inc{background:var(--inc-bg);color:var(--inc);border:1px solid rgba(0,201,177,.3)}
+.b-blue{background:rgba(79,143,255,.12);color:var(--accent);border:1px solid rgba(79,143,255,.3)}
+.b-peer{background:var(--peer-bg);color:var(--peer);border:1px solid rgba(167,139,250,.3)}
+.b-lre{background:var(--lre-bg);color:var(--lre);border:1px solid rgba(245,158,11,.3)}
+.b-step{background:var(--step-bg);color:var(--step);border:1px solid rgba(56,189,248,.3)}
+.b-safe{background:var(--safe-bg);color:var(--safe);border:1px solid rgba(239,68,68,.3)}
+.b-id{background:var(--id-bg);color:var(--id);border:1px solid rgba(251,146,60,.3)}
+.b-gen{background:var(--gen-bg);color:var(--gen);border:1px solid rgba(52,211,153,.3)}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+
+/* ── INFO GRID ── */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.info-cell{background:var(--surface);padding:13px 16px}
+.info-cell .lbl{font-size:10px;color:var(--muted);font-weight:700;margin-bottom:3px;letter-spacing:.04em}
+.info-cell .val{font-size:13px;font-weight:600;color:var(--text)}
+
+/* ── CARD ── */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.card{border-radius:var(--r);padding:18px;border:1px solid var(--border);background:var(--surface2)}
+.card-icon{font-size:22px;margin-bottom:10px}
+.card-title{font-size:13px;font-weight:900;margin-bottom:8px}
+.card-body{font-size:12px;color:var(--muted);line-height:1.75}
+.card-inc{background:var(--inc-bg);border-color:rgba(0,201,177,.25)}
+.card-peer{background:var(--peer-bg);border-color:rgba(167,139,250,.25)}
+.card-lre{background:var(--lre-bg);border-color:rgba(245,158,11,.25)}
+.card-step{background:var(--step-bg);border-color:rgba(56,189,248,.25)}
+.t-inc{color:var(--inc)}.t-peer{color:var(--peer)}.t-lre{color:var(--lre)}.t-step{color:var(--step)}
+.t-gen{color:var(--gen)}.t-id{color:var(--id)}.t-safe{color:var(--safe)}.t-acc{color:var(--accent)}
+
+/* ── TABLE ── */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th,.tbl td{padding:10px 13px;border:1px solid var(--border);font-size:12px;text-align:left;vertical-align:top}
+.tbl th{background:var(--surface);font-weight:700;color:var(--muted);font-size:11px;letter-spacing:.04em;text-align:center}
+.tbl td{background:var(--bg)}
+.tbl tr:nth-child(even) td{background:var(--surface)}
+.tbl td strong{font-weight:700;color:var(--text)}
+.tbl-highlight td{background:rgba(0,201,177,.07)!important;font-weight:600}
+.tbl-highlight td:first-child{border-left:3px solid var(--inc)}
+
+/* ── ACCORDION ── */
+.acc-item{border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px;overflow:hidden}
+.acc-trigger{width:100%;text-align:left;background:var(--surface);padding:13px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border:none;color:var(--text);font-family:inherit;font-size:14px;font-weight:700;transition:background .15s}
+.acc-trigger:hover{background:var(--surface2)}
+.acc-body{display:none;padding:18px;background:var(--surface2);border-top:1px solid var(--border)}
+.acc-body.open{display:block;animation:fd .2s ease}
+.acc-arrow{font-size:12px;transition:transform .3s;flex-shrink:0;margin-left:10px}
+
+/* ── PHASE BADGES ── */
+.ph{display:inline-flex;align-items:center;font-size:10px;padding:2px 9px;border-radius:20px;font-weight:700;margin-right:8px}
+.ph-i{background:rgba(79,143,255,.15);color:var(--accent)}
+.ph-m{background:rgba(245,158,11,.15);color:var(--lre)}
+.ph-c{background:rgba(0,201,177,.15);color:var(--inc)}
+.ph-w{background:rgba(167,139,250,.15);color:var(--peer)}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap}
+.tab{padding:7px 16px;border-radius:30px;border:2px solid var(--border);font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;background:var(--surface2);color:var(--muted);white-space:nowrap}
+.tab.t-full{border-color:var(--inc);color:var(--inc);background:var(--inc-bg)}
+.tab.t-part{border-color:var(--peer);color:var(--peer);background:var(--peer-bg)}
+.tab.t-rev{border-color:var(--lre);color:var(--lre);background:var(--lre-bg)}
+.panel{display:none}.panel.active{display:block;animation:fd .3s ease}
+
+/* ── NOTE ── */
+.note{font-size:12px;color:var(--muted);padding:10px 14px;background:var(--surface);border-radius:var(--rs);border-left:3px solid var(--accent);margin-top:10px;line-height:1.75}
+.note-warn{border-left-color:var(--safe);background:var(--safe-bg)}
+.note-inc{border-left-color:var(--inc)}
+.note-peer{border-left-color:var(--peer)}
+.note-lre{border-left-color:var(--lre)}
+
+/* ── GOAL CARDS ── */
+.goal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.goal-card{border-radius:var(--rs);padding:15px;border:1px solid var(--border);background:var(--surface2)}
+.goal-type{font-size:10px;font-weight:700;letter-spacing:.08em;margin-bottom:7px}
+.goal-text{font-size:12px;line-height:1.75}
+.gt-c{color:var(--accent)}.gt-a{color:var(--inc)}.gt-p{color:var(--lre)}
+
+/* ── TIMER ── */
+.timer-bar{display:flex;height:10px;border-radius:10px;overflow:hidden;margin:12px 0}
+.seg-i{background:var(--accent);width:11.1%}
+.seg-m{background:var(--lre);width:77.8%}
+.seg-c{background:var(--inc);width:11.1%}
+.tc-cards{display:flex;gap:8px;flex-wrap:wrap}
+.tc-card{flex:1;min-width:90px;border-radius:var(--rs);padding:12px;text-align:center;border:1px solid var(--border);background:var(--surface)}
+.tc-lbl{font-size:10px;color:var(--muted);font-weight:700;margin-bottom:3px}
+.tc-t{font-size:18px;font-weight:900}
+
+/* ── STEP MODIFIER ── */
+.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+@media(max-width:640px){.step-grid{grid-template-columns:repeat(2,1fr)}}
+.step-card{border-radius:var(--rs);padding:14px;border:1px solid var(--border);text-align:center}
+.step-S{background:var(--inc-bg);border-color:rgba(0,201,177,.25)}
+.step-T{background:var(--peer-bg);border-color:rgba(167,139,250,.25)}
+.step-E{background:var(--lre-bg);border-color:rgba(245,158,11,.25)}
+.step-P{background:var(--step-bg);border-color:rgba(56,189,248,.25)}
+.step-letter{font-size:28px;font-weight:900;margin-bottom:4px}
+.step-name{font-size:11px;font-weight:700;margin-bottom:6px}
+.step-items{font-size:11px;color:var(--muted);text-align:left;line-height:1.7}
+
+/* ── CHECKLIST ── */
+.checklist{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:8px}
+.cl-item{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;background:var(--surface);border-radius:var(--rs);border:1px solid var(--border);cursor:pointer;transition:all .2s}
+.cl-item:hover{background:var(--surface2)}
+.cl-item.done{background:var(--inc-bg);border-color:rgba(0,201,177,.35)}
+.cl-box{width:19px;height:19px;border-radius:5px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .15s;margin-top:1px}
+.cl-item.done .cl-box{background:var(--inc);border-color:var(--inc);color:#fff}
+.cl-text{font-size:12px;flex:1;line-height:1.6}
+.pb-wrap{height:8px;background:var(--surface);border-radius:10px;overflow:hidden;margin:12px 0 5px}
+.pb{height:100%;background:linear-gradient(90deg,var(--inc),var(--accent));border-radius:10px;transition:width .4s ease;width:0}
+.pb-lbl{font-size:11px;color:var(--muted);text-align:right}
+
+/* ── REQUIRED ITEMS ── */
+.req-grid{display:grid;gap:5px}
+.req-item{display:flex;align-items:center;gap:12px;padding:11px 15px;background:var(--surface);border-radius:var(--rs);border:1px solid var(--border);cursor:pointer;transition:all .2s}
+.req-item:hover{background:var(--surface2)}
+.req-item.rd{background:var(--inc-bg);border-color:rgba(0,201,177,.3)}
+.req-num{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0;background:var(--accent);color:#fff}
+.req-item.rd .req-num{background:var(--inc)}
+.req-text{font-size:12px;font-weight:500;flex:1}
+.req-chk{font-size:13px;opacity:0;transition:opacity .2s;color:var(--inc)}
+.req-item.rd .req-chk{opacity:1}
+
+/* ── MISTAKE ── */
+.mistake-list{display:grid;gap:7px}
+.mist-item{display:flex;gap:12px;padding:12px 15px;border-radius:var(--rs);background:var(--safe-bg);border:1px solid rgba(239,68,68,.2);align-items:flex-start}
+.mist-num{width:23px;height:23px;border-radius:6px;background:var(--safe);color:#fff;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mist-t{font-size:12px;font-weight:700;color:var(--safe);margin-bottom:3px}
+.mist-c{font-size:11px;color:var(--muted)}
+
+/* ── PEER EVAL ── */
+.ev3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+@media(max-width:600px){.ev3-grid{grid-template-columns:1fr}}
+
+/* ── RUBRIC ── */
+.rub-ex{background:rgba(0,201,177,.06)!important}
+.rub-av{background:rgba(79,143,255,.05)!important}
+.rub-po{background:rgba(255,107,107,.06)!important}
+
+/* ── QUOTE ── */
+.quote-box{border-radius:var(--rs);padding:13px 18px 13px 32px;background:var(--surface3);border:1px solid var(--border);margin:8px 0;position:relative}
+.quote-box::before{content:'"';font-size:38px;color:var(--inc);opacity:.3;position:absolute;top:2px;left:8px;line-height:1}
+.q-lbl{font-size:10px;font-weight:700;color:var(--inc);margin-bottom:3px}
+.q-txt{font-size:13px}
+.q-note{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* ── DSM CHECK ── */
+.dsm-cols{display:flex;gap:14px;flex-wrap:wrap}
+.dsm-col{flex:1;min-width:220px}
+.dsm-ct{font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;letter-spacing:.06em}
+.dsm-ci{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.dsm-ci:last-child{border-bottom:none}
+.dsm-box{width:17px;height:17px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all .15s;margin-top:2px}
+.dsm-box.bi{background:var(--id);border-color:var(--id);color:#fff}
+.dsm-box.bg{background:var(--gen);border-color:var(--gen);color:#fff}
+.dsm-result{margin-top:14px;padding:13px 17px;border-radius:var(--rs);background:var(--surface2);border:1px solid var(--border);font-size:13px;min-height:48px;transition:border-color .3s}
+
+/* ── REF ── */
+.ref-list{list-style:none;counter-reset:rc}
+.ref-list li{counter-increment:rc;display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;line-height:1.7}
+.ref-list li::before{content:"["counter(rc)"]";color:var(--inc);font-weight:700;font-size:11px;flex-shrink:0;padding-top:2px}
+.ref-list a{color:var(--inc);text-decoration:none}
+.ref-list a:hover{text-decoration:underline}
+
+/* ── SCORE ── */
+.score-disp{font-size:34px;font-weight:900;color:var(--lre)}
+
+/* ── TWO COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.two-col{grid-template-columns:1fr}}
+
+/* ── LAYER VIZ ── */
+.layer-row{display:flex;align-items:stretch;gap:0;margin-bottom:6px;border-radius:var(--rs);overflow:hidden;border:1px solid var(--border)}
+.layer-label{background:var(--surface);padding:10px 14px;font-size:11px;font-weight:700;display:flex;align-items:center;min-width:100px;flex-shrink:0;color:var(--muted)}
+.layer-cells{display:flex;flex:1;gap:0}
+.layer-cell{flex:1;padding:10px 12px;font-size:11px;border-left:1px solid var(--border);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;line-height:1.5}
+
+/* ── ANIM ── */
+@keyframes fd{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── PRINT ── */
+@media print{
+  body{background:#fff;color:#000;font-size:11px}
+  .nav{display:none}
+  .container{padding:20px;max-width:100%}
+  .acc-body{display:block!important}
+  .panel{display:block!important}
+  *{color:#000!important;background:transparent!important;border-color:#ccc!important}
+  .section{margin-bottom:24px;page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+<div class="nav-inner">
+  <div class="nav-logo">통합체육 세안</div>
+  <div class="nav-item" onclick="goTo('s01')">①기본정보</div>
+  <div class="nav-item" onclick="goTo('s02')">②단원개관</div>
+  <div class="nav-item" onclick="goTo('s03')">③학습목표</div>
+  <div class="nav-item" onclick="goTo('s04')">④학습자실태</div>
+  <div class="nav-item" onclick="goTo('s05')">⑤지도계획</div>
+  <div class="nav-item" onclick="goTo('s06')">⑥통합4원칙</div>
+  <div class="nav-item" onclick="goTo('s07')">⑦본시목표</div>
+  <div class="nav-item" onclick="goTo('s08')">⑧과정안</div>
+  <div class="nav-item" onclick="goTo('s09')">⑨평가</div>
+  <div class="nav-item" onclick="goTo('s10')">⑩자료목록</div>
+  <div class="nav-item" onclick="goTo('s11')">⑪통합유형</div>
+  <div class="nav-item" onclick="goTo('s12')">⑫자기검증</div>
+  <div class="nav-item" onclick="goTo('s13')">⑬병렬처리</div>
+  <div class="nav-item" onclick="goTo('s14')">⑭동료평가</div>
+  <div class="nav-actions">
+    <button class="btn-sm" onclick="window.print()">🖨 인쇄</button>
+    <button class="btn-sm btn-p" onclick="goTo('s12')">✅ 자기검증</button>
+  </div>
+</div>
+</nav>
+
+<div class="container">
+
+<!-- ══════════════════════════════
+  ① 기본 정보
+══════════════════════════════ -->
+<div class="section" id="s01">
+<div class="section-label">SECTION 01 · 단원명 / 제재명</div>
+<div class="section-title">기본 정보 — 통합체육 단원 계층 구조</div>
+<div class="badge-row">
+  <span class="badge b-inc">2022 개정 교육과정</span>
+  <span class="badge b-blue">지적장애체육교육론</span>
+  <span class="badge b-lre">통합체육 1차시 · 45분</span>
+  <span class="badge b-peer">백석대학교 특수체육교육과</span>
+</div>
+
+<!-- 단원 계층 -->
+<div style="background:var(--surface2);border-radius:var(--r);padding:15px 20px;margin-bottom:14px;border:1px solid var(--border)">
+  <div style="font-size:10px;color:var(--muted);margin-bottom:8px;font-weight:700;letter-spacing:.06em">단원 계층 (대단원 → 소단원 → 본시 주제)</div>
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <span style="font-size:13px;font-weight:700;background:rgba(0,201,177,.1);padding:6px 13px;border-radius:6px;border:1px solid rgba(0,201,177,.25)">지적장애 학생 체육교육</span>
+    <span style="color:var(--muted)">▶</span>
+    <span style="font-size:13px;font-weight:700;background:rgba(167,139,250,.1);padding:6px 13px;border-radius:6px;border:1px solid rgba(167,139,250,.25)">통합체육 교수·학습 전략</span>
+    <span style="color:var(--muted)">▶</span>
+    <span style="font-size:13px;font-weight:700;background:rgba(245,158,11,.1);padding:6px 13px;border-radius:6px;border:1px solid rgba(245,158,11,.25)">S.T.E.P. 수정 기반 플로어볼 통합수업</span>
+  </div>
+</div>
+
+<div class="info-grid">
+  <div class="info-cell"><div class="lbl">교과</div><div class="val">지적장애체육교육론</div></div>
+  <div class="info-cell"><div class="lbl">차시</div><div class="val">1차시 / 전체 15차시</div></div>
+  <div class="info-cell"><div class="lbl">대상</div><div class="val">특수체육교육과 3학년</div></div>
+  <div class="info-cell"><div class="lbl">수업 형태</div><div class="val">통합체육 (장애·비장애 혼합)</div></div>
+  <div class="info-cell"><div class="lbl">가상 학급 구성</div><div class="val">지적장애 3명(A·B·C) + 비장애 4명(D·E·F·G)</div></div>
+  <div class="info-cell"><div class="lbl">장소</div><div class="val">강의실 310호 / 소체육관</div></div>
+  <div class="info-cell"><div class="lbl">수업 시간</div><div class="val">45분 (1차시)</div></div>
+  <div class="info-cell"><div class="lbl">핵심 과제</div><div class="val">플로어볼 패스·슛 통합 게임</div></div>
+  <div class="info-cell"><div class="lbl">교수자</div><div class="val">서건우 교수</div></div>
+  <div class="info-cell"><div class="lbl">준비물</div><div class="val">플로어볼 스틱·볼·골대, S.T.E.P. 수정 카드, 역할 뱃지, 타임타이머</div></div>
+  <div class="info-cell"><div class="lbl">교육과정</div><div class="val">교육부 고시 제2022-33호</div></div>
+  <div class="info-cell"><div class="lbl">통합 유형</div><div class="val">완전 통합 → 부분 통합 단계 적용</div></div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+  ② 단원 개관
+══════════════════════════════ -->
+<div class="section" id="s02">
+<div class="section-label">SECTION 02 · 단원 개관</div>
+<div class="section-title">단원 개관 — 통합체육의 철학과 교육과정 연계</div>
+<div style="background:var(--surface2);border-radius:var(--r);padding:20px 24px;border:1px solid var(--border);line-height:1.9;font-size:13px">
+  <p style="margin-bottom:12px"><strong>통합체육(Inclusive Physical Education)</strong>은 장애 학생이 비장애 또래와 함께 일반 체육 수업에 참여하는 교육 형태로, <strong>최소제한환경(LRE: Least Restrictive Environment)</strong> 원칙에 따라 장애 학생의 교육적 필요를 최대한 일반 환경에서 충족하는 것을 목표로 한다(IDEA, 2004; 교육부, 2022).</p>
+  <p style="margin-bottom:12px">지적장애 학생의 통합체육 참여는 단순한 물리적 배치를 넘어, <strong>의미 있는 참여(meaningful participation)</strong>를 보장해야 한다. 이를 위해 Block(2016)이 제안한 <strong>S.T.E.P.(Space·Task·Equipment·People) 수정 모델</strong>을 적용하여 과제·환경·기구·인적 지원을 개별 수준에 맞게 수정한다.</p>
+  <p style="margin-bottom:12px">비장애 학생은 단순한 수업 참여자를 넘어 <strong>또래 지원자(Peer Support)</strong> 역할을 수행함으로써, 장애 학생의 과제 수행을 지원하고 사회적 상호작용을 촉진한다. 또래 교수(Peer Tutoring)는 지적장애 학생의 기술 습득률을 유의미하게 향상시킨다(Klavina &amp; Block, 2008).</p>
+  <p>본 단원은 <strong>플로어볼(Floorball)</strong>을 핵심 신체활동으로 활용한다. 플로어볼은 규칙 수정이 용이하고, 다양한 기능 수준의 학생이 동시에 참여할 수 있어 통합체육 종목으로 높은 적합성을 가진다(Sherrill, 2004). <strong>2022 개정 교육과정</strong>의 체육과 핵심역량(신체적 능력, 자기 관리, 사회적 상호작용)과 연계하여, 통합 환경에서의 협력·배려·존중 가치를 함께 함양한다.</p>
+</div>
+<div class="note note-inc" style="margin-top:12px">📎 법적 근거: 「장애인 등에 대한 특수교육법」 제21조(통합교육) — 특수교육 대상자가 일반학교에서 장애 유형·장애 정도에 따라 차별을 받지 않고 또래와 함께 개개인의 교육적 요구에 적합한 교육을 받을 권리. 교육부(2022) 체육과 핵심역량: 신체적 능력 / 자기 관리 / 사회적 상호작용.</div>
+</div>
+
+<!-- ══════════════════════════════
+  ③ 단원 학습 목표
+══════════════════════════════ -->
+<div class="section" id="s03">
+<div class="section-label">SECTION 03 · 단원 학습 목표</div>
+<div class="section-title">단원 학습 목표 — 인지·정의·심동 3영역 SMART 기준</div>
+<div class="badge-row">
+  <span class="badge b-inc">[12체운01-02]</span>
+  <span class="badge b-peer">[12체사01-01]</span>
+  <span class="badge b-lre">UDL 3원칙 적용</span>
+  <span class="badge b-step">S.T.E.P. 수정 모델</span>
+</div>
+<div class="goal-grid">
+  <div class="goal-card">
+    <div class="goal-type gt-c">🧠 인지적 영역 (Cognitive)</div>
+    <div class="goal-text">S.T.E.P.(Space·Task·Equipment·People) 수정 모델의 4요소를 각각 1가지 이상의 예시와 함께 설명할 수 있다.<br><br>통합체육의 3가지 유형(완전·부분·역통합)을 구분하고, 지적장애 학생의 기능 수준에 적합한 유형을 선택하여 근거를 2가지 이상 제시할 수 있다.</div>
+  </div>
+  <div class="goal-card">
+    <div class="goal-type gt-a">⚡ 심동적 영역 (Psychomotor)</div>
+    <div class="goal-text">가상 학습자 A(지적장애 2급)의 IEP 목표에 맞춘 플로어볼 패스 과제를 S.T.E.P. 수정 카드를 활용하여 설계하고, 또래 지원자 역할을 배정하여 3분 이상 통합 게임을 진행할 수 있다.</div>
+  </div>
+  <div class="goal-card">
+    <div class="goal-type gt-p">💚 정의적 영역 (Affective)</div>
+    <div class="goal-text">통합체육 수업 중 지적장애 학생의 참여를 지원하는 또래 지원자 역할을 수행하며, 동료 평가 체크리스트에서 배려·협력 항목 3점(4점 척도) 이상을 획득할 수 있다.</div>
+  </div>
+</div>
+<div class="note" style="margin-top:12px">⚠ <strong>관찰 가능 행동 동사 원칙:</strong> "이해한다" ❌ → "2가지 이상 제시할 수 있다 / 3분 이상 진행할 수 있다" ✅ — 반드시 측정 가능한 행동 동사 사용 (Block, 2016)</div>
+</div>
+
+<!-- ══════════════════════════════
+  ④ 학습자 실태 분석
+══════════════════════════════ -->
+<div class="section" id="s04">
+<div class="section-label">SECTION 04 · 학습자 실태 분석</div>
+<div class="section-title">학습자 실태 분석 — 장애·비장애 학생 통합 IEP 연계</div>
+
+<div style="margin-bottom:16px">
+  <div class="sub-title">학급 전체 특성 (통합학급 7명)</div>
+  <div class="info-grid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))">
+    <div class="info-cell"><div class="lbl">총 인원</div><div class="val">7명</div></div>
+    <div class="info-cell"><div class="lbl">지적장애</div><div class="val">3명 (A·B·C)</div></div>
+    <div class="info-cell"><div class="lbl">비장애 또래</div><div class="val">4명 (D·E·F·G)</div></div>
+    <div class="info-cell"><div class="lbl">통합 비율</div><div class="val">3:4 (장:비장애)</div></div>
+    <div class="info-cell"><div class="lbl">핵심 종목</div><div class="val">플로어볼</div></div>
+    <div class="info-cell"><div class="lbl">지원 구조</div><div class="val">또래 1:1 짝 배치</div></div>
+  </div>
+</div>
+
+<div class="sub-title">지적장애 학생 — IEP 연계표 (행 클릭 시 세부 지원 확인)</div>
+<table class="tbl" style="margin-bottom:6px">
+  <thead><tr><th>학생</th><th>장애 유형</th><th>기능 수준</th><th>통합 참여 특성</th><th>IEP 체육 목표</th><th>또래 지원자</th><th>S.T.E.P. 수정</th></tr></thead>
+  <tbody>
+    <tr onclick="toggleDetail('id-a')" style="cursor:pointer">
+      <td><strong style="color:var(--id)">A</strong></td>
+      <td>지적장애 2급<br><small style="color:var(--muted)">(중등도)</small></td>
+      <td>TGMD-II 균형 취약<br>집중 5분</td>
+      <td>또래 주도 활동 선호<br>언어 모방 가능</td>
+      <td style="color:var(--id);font-weight:700">플로어볼 패스 5회 성공</td>
+      <td>D학생 (1:1 짝)</td>
+      <td>거리 단축 / 경량 볼</td>
+    </tr>
+    <tr id="id-a" style="display:none">
+      <td colspan="7" style="background:var(--id-bg);padding:14px 18px">
+        <strong style="color:var(--id)">학생 A 개별 지원 세부계획</strong>
+        <div style="margin-top:8px;font-size:12px;line-height:1.9">
+          <strong>S — Space:</strong> 패스 거리 3m→1.5m 단축, 전용 활동 구역 테이프 표시<br>
+          <strong>T — Task:</strong> 패스 5회 목표 → 슛보다 패스 집중, 2단계 지시 이하<br>
+          <strong>E — Equipment:</strong> 경량 스펀지 볼(100g), 짧은 스틱(일반의 70%)<br>
+          <strong>P — People:</strong> D학생 1:1 짝 배치, 물리적 촉구→언어 촉구→독립 단계<br>
+          <strong>IEP 연계:</strong> 이동 및 물체 조작 기술 향상 목표 직접 연계
+        </div>
+      </td>
+    </tr>
+    <tr onclick="toggleDetail('id-b')" style="cursor:pointer">
+      <td><strong style="color:var(--accent)">B</strong></td>
+      <td>지적장애 3급<br><small style="color:var(--muted)">(경등도)</small></td>
+      <td>TGMD-II 협응 양호<br>집중 15분</td>
+      <td>규칙 학습 가능<br>협동 게임 선호</td>
+      <td style="color:var(--accent);font-weight:700">팀 게임 3세트 완주</td>
+      <td>E·F학생 공유</td>
+      <td>규칙 단순화 / 역할 명료화</td>
+    </tr>
+    <tr id="id-b" style="display:none">
+      <td colspan="7" style="background:rgba(79,143,255,.07);padding:14px 18px">
+        <strong style="color:var(--accent)">학생 B 개별 지원 세부계획</strong>
+        <div style="margin-top:8px;font-size:12px;line-height:1.9">
+          <strong>S — Space:</strong> 일반 코트의 70% 크기, 득점 구역 확대<br>
+          <strong>T — Task:</strong> 규칙 2가지 단순화(오프사이드·스틱 높이 규정 면제), 역할 카드 제공<br>
+          <strong>E — Equipment:</strong> 일반 장비 사용 가능 (협응 양호)<br>
+          <strong>P — People:</strong> E·F학생 교대 지원, 또래 모델링 → 독립 수행 유도<br>
+          <strong>IEP 연계:</strong> 팀 스포츠 참여 및 사회적 상호작용 목표
+        </div>
+      </td>
+    </tr>
+    <tr onclick="toggleDetail('id-c')" style="cursor:pointer">
+      <td><strong style="color:var(--lre)">C</strong></td>
+      <td>자폐성+지적장애</td>
+      <td>TGMD-II 회전 기피<br>상동행동 빈번</td>
+      <td>구조화 환경 선호<br>전환 어려움</td>
+      <td style="color:var(--lre);font-weight:700">구조화 게임 루틴 완수</td>
+      <td>G학생 (1:1 고정)</td>
+      <td>시각 일정표 / 루틴 구조화</td>
+    </tr>
+    <tr id="id-c" style="display:none">
+      <td colspan="7" style="background:var(--lre-bg);padding:14px 18px">
+        <strong style="color:var(--lre)">학생 C 개별 지원 세부계획</strong>
+        <div style="margin-top:8px;font-size:12px;line-height:1.9">
+          <strong>S — Space:</strong> 고정 위치 지정(상동 안전 구역), 회전 요소 완전 제거<br>
+          <strong>T — Task:</strong> 시각 일정표 4단계 루틴, 전환 5분 전 예고 타이머<br>
+          <strong>E — Equipment:</strong> 친숙한 색깔 볼 고정 사용(빨간색), 소음 최소화 기구<br>
+          <strong>P — People:</strong> G학생 1:1 고정, 신체 접촉 최소화, 언어 촉구 우선<br>
+          <strong>IEP 연계:</strong> 구조화 활동 완수 및 전환 적응 목표
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="note">🖱 행을 클릭하면 S.T.E.P. 세부 지원 계획이 펼쳐집니다.</div>
+
+<div style="margin-top:18px">
+  <div class="sub-title">비장애 학생 — 또래 지원자 역할 배치</div>
+  <table class="tbl">
+    <thead><tr><th>학생</th><th>성향·강점</th><th>또래 지원 역할</th><th>담당 장애 학생</th><th>사전 교육 내용</th></tr></thead>
+    <tbody>
+      <tr><td><strong style="color:var(--gen)">D</strong></td><td>리더십 강함, 인내심 양호</td><td><strong>또래 교수자 (Peer Tutor)</strong></td><td>A학생 (1:1 전담)</td><td>물리적 촉구 3단계, 경량 볼 패스 기술</td></tr>
+      <tr><td><strong style="color:var(--gen)">E</strong></td><td>의사소통 원활, 경쟁 지향</td><td><strong>또래 모델 (Peer Model)</strong></td><td>B학생 (공유)</td><td>시범 방법, 언어 촉구 사용법</td></tr>
+      <tr><td><strong style="color:var(--gen)">F</strong></td><td>협동 지향, 규칙 준수 우수</td><td><strong>또래 보조 (Peer Assistant)</strong></td><td>B학생 (공유)</td><td>단순화 규칙 안내, 팀 역할 분배</td></tr>
+      <tr><td><strong style="color:var(--gen)">G</strong></td><td>차분함, 구조 이해 빠름</td><td><strong>또래 지원자 (Peer Supporter)</strong></td><td>C학생 (1:1 고정)</td><td>시각 일정표 사용, 전환 예고, 상동 대응</td></tr>
+    </tbody>
+  </table>
+  <div class="note note-peer" style="margin-top:8px">👥 또래 지원자 사전 교육(15분) 필수: 장애 이해 교육 + 역할별 기술 훈련 + 긴급 상황 대응. 또래 지원은 강요가 아닌 자발적 참여 원칙 (Klavina &amp; Block, 2008).</div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+  ⑤ 단원 지도 계획
+══════════════════════════════ -->
+<div class="section" id="s05">
+<div class="section-label">SECTION 05 · 단원 지도 계획</div>
+<div class="section-title">단원 지도 계획 — 전체 15차시 배열표</div>
+<table class="tbl">
+  <thead><tr><th>차시</th><th>주제</th><th>핵심 활동</th><th>통합 형태</th><th>S.T.E.P. 초점</th></tr></thead>
+  <tbody>
+    <tr class="tbl-highlight">
+      <td style="text-align:center"><strong>1 ★</strong></td>
+      <td><strong>통합체육 이해와 플로어볼 기초 (본시)</strong></td>
+      <td>S.T.E.P. 수정 설계 + 또래 지원 역할 배정 + 미니게임</td>
+      <td>완전→부분 통합</td>
+      <td>P (People) 우선</td>
+    </tr>
+    <tr><td style="text-align:center">2</td><td>LRE 원칙과 통합 유형 이해</td><td>완전·부분·역통합 사례 분석</td><td>강의+토의</td><td>T (Task) 설계</td></tr>
+    <tr><td style="text-align:center">3</td><td>S.T.E.P. 수정 모델 실습</td><td>4요소별 수정 카드 제작</td><td>소집단 활동</td><td>S·T·E·P 전체</td></tr>
+    <tr><td style="text-align:center">4</td><td>또래 지원 기술 훈련</td><td>물리적·언어·시각 촉구 실습</td><td>짝 활동</td><td>P (People)</td></tr>
+    <tr><td style="text-align:center">5</td><td>플로어볼 기술 수정 적용</td><td>패스·슛 과제 수정 실습</td><td>부분 통합</td><td>E (Equipment)</td></tr>
+    <tr><td style="text-align:center">6~7</td><td>통합 게임 설계 실습</td><td>규칙 수정 통합 플로어볼 게임</td><td>완전 통합</td><td>S·T 중심</td></tr>
+    <tr><td style="text-align:center">8</td><td>IEP 목표 연계 수업 설계</td><td>개별 IEP 기반 게임 수정</td><td>혼합</td><td>전체 통합</td></tr>
+    <tr><td style="text-align:center">9</td><td>안전·응급 계획 (통합 맥락)</td><td>통합 환경 안전 프로토콜</td><td>강의+실습</td><td>P (Safety)</td></tr>
+    <tr><td style="text-align:center">10~11</td><td>역통합 체육 설계</td><td>장애 체험 + 역통합 게임</td><td>역통합</td><td>S·E 수정</td></tr>
+    <tr><td style="text-align:center">12~13</td><td>모의수업 실습 (통합체육)</td><td>완성 세안 기반 통합 모의수업</td><td>혼합</td><td>전략 종합</td></tr>
+    <tr><td style="text-align:center">14</td><td>포트폴리오 작성</td><td>S.T.E.P. 수정 사례 포트폴리오</td><td>개인 작업</td><td>성찰 종합</td></tr>
+    <tr><td style="text-align:center">15</td><td>종합 평가 및 발표</td><td>통합체육 세안 발표+동료 평가</td><td>발표</td><td>종합 평가</td></tr>
+  </tbody>
+</table>
+<div class="note">★ 현재 본시: 1차시. 하이라이트 행이 본시입니다.</div>
+</div>
+
+<!-- ══════════════════════════════
+  ⑥ 통합체육 4가지 핵심 원칙
+══════════════════════════════ -->
+<div class="section" id="s06">
+<div class="section-label">SECTION 06 · 통합체육 4가지 핵심 원칙</div>
+<div class="section-title">통합체육 수업 세안의 4가지 핵심 원칙</div>
+<div class="card-grid">
+  <div class="card card-inc">
+    <div class="card-icon">🤝</div>
+    <div class="card-title t-inc">① 최소제한환경 (LRE) 원칙</div>
+    <div class="card-body">
+      지적장애 학생이 최대한 비장애 또래와 함께 체육 활동에 참여하는 환경을 설계합니다. 완전 분리보다 <strong>완전 통합 → 부분 통합 → 역통합</strong> 순서로 단계를 적용합니다.<br><br>
+      • 분리 환경: LRE 위반 (최후 수단)<br>
+      • 물리적 통합 + 의미 있는 참여 보장<br>
+      • 법적 근거: 특수교육법 제21조
+    </div>
+  </div>
+  <div class="card card-step">
+    <div class="card-icon">🔧</div>
+    <div class="card-title t-step">② S.T.E.P. 수정 모델</div>
+    <div class="card-body">
+      Block(2016)의 4요소 수정 모델로 통합 참여를 지원합니다.<br><br>
+      • <strong>S</strong>pace — 공간·거리 수정<br>
+      • <strong>T</strong>ask — 과제 난이도·규칙 단순화<br>
+      • <strong>E</strong>quipment — 기구 수정·경량화<br>
+      • <strong>P</strong>eople — 인적 지원·또래 역할 배정
+    </div>
+  </div>
+  <div class="card card-peer">
+    <div class="card-icon">👥</div>
+    <div class="card-title t-peer">③ 또래 지원 체계</div>
+    <div class="card-body">
+      비장애 학생을 또래 교수자·모델·보조자로 구조화하여 장애 학생의 의미 있는 참여를 지원합니다.<br><br>
+      • 또래 교수(Peer Tutoring): 1:1 직접 지도<br>
+      • 또래 모델링: 정확한 시범 제공<br>
+      • 또래 보조: 규칙·역할 안내<br>
+      • 사전 교육 15분 필수 (Klavina &amp; Block, 2008)
+    </div>
+  </div>
+  <div class="card card-lre">
+    <div class="card-icon">📋</div>
+    <div class="card-title t-lre">④ IEP 연계 개별화 지원</div>
+    <div class="card-body">
+      각 지적장애 학생의 IEP 목표가 통합 수업 목표와 직접 연계되어야 합니다. 동일 과제·다른 목표(same activity, different objectives) 원칙을 적용합니다.<br><br>
+      • A학생 IEP: 패스 5회 성공<br>
+      • B학생 IEP: 팀 게임 3세트 완주<br>
+      • C학생 IEP: 구조화 루틴 완수
+    </div>
+  </div>
+</div>
+
+<!-- S.T.E.P. 수정 모델 상세 -->
+<div style="margin-top:22px">
+  <div class="sub-title">S.T.E.P. 수정 모델 상세 — 플로어볼 적용</div>
+  <div class="step-grid">
+    <div class="step-card step-S">
+      <div class="step-letter t-inc">S</div>
+      <div class="step-name t-inc">Space (공간)</div>
+      <div class="step-items">
+        ▸ 코트 크기: 100% → 70% → 50%<br>
+        ▸ 골문 크기: 확대 (성공 경험↑)<br>
+        ▸ 패스 거리: 3m → 1.5m 단축<br>
+        ▸ 전용 안전 구역 테이프 표시<br>
+        ▸ 학생 C: 고정 위치 지정
+      </div>
+    </div>
+    <div class="step-card step-T">
+      <div class="step-letter t-peer">T</div>
+      <div class="step-name t-peer">Task (과제)</div>
+      <div class="step-items">
+        ▸ 패스→슛 순서 단순화<br>
+        ▸ 오프사이드 규정 면제<br>
+        ▸ 스틱 높이 규정 면제<br>
+        ▸ 역할 카드로 명료화<br>
+        ▸ 3단계 이하 구어 지시
+      </div>
+    </div>
+    <div class="step-card step-E">
+      <div class="step-letter t-lre">E</div>
+      <div class="step-name t-lre">Equipment (기구)</div>
+      <div class="step-items">
+        ▸ 경량 스펀지 볼 (100g)<br>
+        ▸ 짧은 스틱 (일반의 70%)<br>
+        ▸ 소음 낮은 볼 (학생 C)<br>
+        ▸ 색깔 구분 볼 (팀 식별)<br>
+        ▸ 골대 안전 패딩
+      </div>
+    </div>
+    <div class="step-card step-P">
+      <div class="step-letter t-step">P</div>
+      <div class="step-name t-step">People (인적 지원)</div>
+      <div class="step-items">
+        ▸ D: A학생 1:1 또래 교수<br>
+        ▸ E·F: B학생 모델·보조<br>
+        ▸ G: C학생 1:1 고정 지원<br>
+        ▸ 촉구 3단계 (물리→언어→독립)<br>
+        ▸ 사전 교육 15분 실시
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 안전·응급 계획 -->
+<div style="margin-top:18px">
+  <div class="sub-title">🚨 안전 및 응급 대응 계획 (통합 환경 적용)</div>
+  <table class="tbl">
+    <thead><tr><th>상황</th><th>즉각 대응</th><th>담당자</th><th>통합 환경 유의사항</th></tr></thead>
+    <tbody>
+      <tr><td><strong>발작</strong></td><td>활동 즉시 중단 → 안전 자세 확보 → 5분 이상 지속 시 119 → 보호자 연락</td><td>교수자 + 또래 지원자 G</td><td>비장애 학생 공황 예방 교육 사전 실시</td></tr>
+      <tr><td><strong>낙상</strong></td><td>활동 중단 → 부위 확인 → 이동 금지 → 보건실 인계</td><td>교수자 → 보건실(내선)</td><td>플로어볼 스틱 안전 거리 2m 이상 확보</td></tr>
+      <tr><td><strong>상동행동 급증</strong></td><td>G학생이 안전 구역 안내 → 교수자 개입 → 쿨다운 루틴 실행</td><td>교수자 + G학생</td><td>비장애 학생 상동행동 이해 사전 교육 필수</td></tr>
+      <tr><td><strong>또래 갈등</strong></td><td>활동 일시 중단 → 중재 → 역할 재조정</td><td>교수자</td><td>갈등 예방: 역할 카드 명료화 사전 설명</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:8px;font-size:12px;color:var(--muted)">AED 위치: 310호 복도 구급함 (좌측 2번째) | 담당자: 서건우 교수 (010-XXXX-XXXX)</div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+  ⑦ 본시 학습 목표 · 발문
+══════════════════════════════ -->
+<div class="section" id="s07">
+<div class="section-label">SECTION 07 · 본시 학습 목표 및 발문</div>
+<div class="section-title">본시 학습 목표 — 관찰 가능 행동 동사 기술</div>
+<div class="goal-grid">
+  <div class="goal-card">
+    <div class="goal-type gt-c">🧠 인지 (본시)</div>
+    <div class="goal-text">S.T.E.P. 4요소를 말하고, 플로어볼 과제에 각 요소를 1가지씩 적용한 수정 계획을 수업 중 작성할 수 있다.</div>
+  </div>
+  <div class="goal-card">
+    <div class="goal-type gt-a">⚡ 심동 (본시)</div>
+    <div class="goal-text">또래 교수자 역할을 맡아 A학생의 IEP 목표(패스 5회 성공)를 목표로 경량 볼 패스 과제를 1회 이상 지도 시연할 수 있다.</div>
+  </div>
+  <div class="goal-card">
+    <div class="goal-type gt-p">💚 정의 (본시)</div>
+    <div class="goal-text">통합 플로어볼 게임 중 장애 학생의 성공 장면에 긍정적 언어 반응 2회 이상을 자발적으로 표현할 수 있다.</div>
+  </div>
+</div>
+
+<!-- 지도상의 유의점 -->
+<div style="margin-top:18px">
+  <div class="sub-title">지도상의 유의점 — 통합 환경 특화</div>
+  <table class="tbl">
+    <thead><tr><th>영역</th><th>유의 사항</th></tr></thead>
+    <tbody>
+      <tr><td><strong>통합 설계</strong></td><td>동일 과제·다른 목표(same activity, different objectives) 원칙 — A·B·C의 IEP 목표가 각기 다르더라도 같은 게임 활동 내에서 달성되도록 설계</td></tr>
+      <tr><td><strong>또래 역할</strong></td><td>또래 지원자가 과잉 보호(over-assistance)하지 않도록 촉구 단계(물리→언어→독립)를 엄수. 비장애 학생의 학습 목표도 동시에 달성되어야 함</td></tr>
+      <tr><td><strong>S.T.E.P. 적용</strong></td><td>수정은 최소 필요 수준(least intrusive modification)에서 시작 — 불필요한 과도 수정은 오히려 통합의 질을 낮춤</td></tr>
+      <tr><td><strong>발문</strong></td><td>장애·비장애 학생 모두를 대상으로 한 열린 발문 포함. "왜 A학생에게 거리를 줄여줬나요?" 형태의 반성적 발문 삽입</td></tr>
+      <tr><td><strong>시간 관리</strong></td><td>도입 5분 / 전개 35분 / 정리 5분 엄수. 전개 35분 초과 시 정리 단계 생략 → 평가·성찰 누락 발생 (빈번한 실수 #3)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 예상 발문 -->
+<div style="margin-top:18px">
+  <div class="sub-title">예상 발문 (따옴표 기술 — 열린·닫힌 혼용)</div>
+  <div class="quote-box">
+    <div class="q-lbl">열린 발문 ①</div>
+    <div class="q-txt">"A학생이 패스를 계속 실패한다면, S.T.E.P.의 어느 요소를 먼저 수정하겠어요? 그 이유는?"</div>
+    <div class="q-note">→ 기대 답변: E(경량 볼로 교체) 또는 S(거리 단축) — 다양한 응답 허용</div>
+  </div>
+  <div class="quote-box">
+    <div class="q-lbl">닫힌 발문 ②</div>
+    <div class="q-txt">"S.T.E.P. 에서 P가 의미하는 것이 무엇인가요?"</div>
+    <div class="q-note">→ 정답: People — 인적 지원, 또래 역할 배정 (Block, 2016)</div>
+  </div>
+  <div class="quote-box">
+    <div class="q-lbl">열린 발문 ③</div>
+    <div class="q-txt">"비장애 학생 D가 A학생을 너무 많이 도와줘서 A가 스스로 할 기회를 잃고 있다면, 어떻게 지도하겠어요?"</div>
+    <div class="q-note">→ 기대 답변: 촉구 단계 조정, 기다리기 전략, 독립 수행 시간 부여 등</div>
+  </div>
+  <div class="quote-box">
+    <div class="q-lbl">반성적 발문 ④</div>
+    <div class="q-txt">"오늘 통합 게임에서 모든 학생이 '의미 있는 참여'를 했다고 생각하나요? 그렇지 않다면 어느 부분을 바꿔야 할까요?"</div>
+    <div class="q-note">→ 통합체육의 핵심 개념 'meaningful participation' 성찰 유도</div>
+  </div>
+  <div class="note note-warn" style="margin-top:8px">⚠ 닫힌 발문만 사용하면 감점 대상. 열린 발문·반성적 발문 각 1개 이상 포함 필수.</div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+  ⑧ 본시 교수-학습 과정안
+══════════════════════════════ -->
+<div class="section" id="s08">
+<div class="section-label">SECTION 08 · 본시 교수-학습 과정안 ★ 핵심</div>
+<div class="section-title">본시 교수-학습 과정안 — 도입→전개→정리</div>
+
+<div style="margin-bottom:14px">
+  <div class="timer-bar"><div class="seg-i"></div><div class="seg-m"></div><div class="seg-c"></div></div>
+  <div class="tc-cards">
+    <div class="tc-card"><div class="tc-lbl">도입</div><div class="tc-t" style="color:var(--accent)">5분</div></div>
+    <div class="tc-card"><div class="tc-lbl">전개 1 (S.T.E.P. 이해)</div><div class="tc-t" style="color:var(--lre)">10분</div></div>
+    <div class="tc-card"><div class="tc-lbl">전개 2 (또래 역할 배정)</div><div class="tc-t" style="color:var(--lre)">10분</div></div>
+    <div class="tc-card"><div class="tc-lbl">전개 3 (통합 게임)</div><div class="tc-t" style="color:var(--lre)">15분</div></div>
+    <div class="tc-card"><div class="tc-lbl">정리</div><div class="tc-t" style="color:var(--inc)">5분</div></div>
+  </div>
+  <div class="note note-warn" style="margin-top:8px">⚠ 전개 합계 35분 엄수. 통합 게임 진행에 시간이 지연되기 쉬우므로 타이머 필수 운영.</div>
+</div>
+
+<!-- 도입 -->
+<div class="acc-item">
+  <button class="acc-trigger" onclick="toggleAcc(this)">
+    <span><span class="ph ph-i">도입</span>5분 — 전시 확인 · 통합 환경 준비 · 역할 안내</span>
+    <span class="acc-arrow">▼</span>
+  </button>
+  <div class="acc-body open">
+    <table class="tbl">
+      <thead><tr><th style="width:13%">단계·시간</th><th style="width:26%">교수자 활동</th><th style="width:18%">학습자 활동</th><th style="width:28%">A·B·C / D·E·F·G 지원</th><th style="width:15%">자료·유의사항</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>전시 확인</strong><br><small>1분</small></td>
+          <td>이름 호명 + 아이컨택. "지난 시간 S.T.E.P. 중 기억나는 것 1단어로 말해보세요"</td>
+          <td>키워드 발표</td>
+          <td><span style="color:var(--id)">A:</span> 이름 2회 호명<br><span style="color:var(--lre)">C:</span> 카드 가리키기 허용<br><span style="color:var(--gen)">D~G:</span> 차례 구조화</td>
+          <td>이름 카드 (시각 단서)</td>
+        </tr>
+        <tr>
+          <td><strong>목표 제시</strong><br><small>2분</small></td>
+          <td>시각 목표 카드 제시. "오늘은 S.T.E.P.를 적용해 플로어볼 통합 게임을 직접 운영합니다"</td>
+          <td>목표 카드 따라 읽기</td>
+          <td><span style="color:var(--lre)">C:</span> 개인 목표 카드 책상 부착</td>
+          <td>목표 카드 (A5, 2종)</td>
+        </tr>
+        <tr>
+          <td><strong>역할 배정·집중</strong><br><small>2분</small></td>
+          <td>역할 뱃지 배부. 또래 지원 역할(D·E·F·G) 간단 확인. 집중 루틴 (심호흡 3회)</td>
+          <td>뱃지 착용 + 집중 루틴</td>
+          <td><span style="color:var(--id)">A:</span> 심호흡 모방<br><span style="color:var(--gen)">D:</span> A학생 옆 이동</td>
+          <td>역할 뱃지 (색상 구분)<br>타임타이머 ON</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 전개 1 -->
+<div class="acc-item">
+  <button class="acc-trigger" onclick="toggleAcc(this)">
+    <span><span class="ph ph-m">전개 1</span>10분 — S.T.E.P. 수정 카드 설계 실습</span>
+    <span class="acc-arrow">▼</span>
+  </button>
+  <div class="acc-body open">
+    <table class="tbl">
+      <thead><tr><th style="width:13%">단계·시간</th><th style="width:26%">교수자 활동</th><th style="width:18%">학습자 활동</th><th style="width:28%">A·B·C / D·E·F·G 지원</th><th style="width:15%">자료·유의사항</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>S.T.E.P. 설계</strong><br><small>10분</small></td>
+          <td>① A·B·C 학생 프로필 카드 배부<br>② 3인 1조 소집단 — 각 학생에 맞는 S.T.E.P. 수정 카드 설계 (6분)<br>③ <strong>"A학생이 패스를 계속 실패한다면 어느 요소를 먼저 수정하겠어요?"</strong> (열린 발문)<br>④ 대표 1인 발표 (3분)</td>
+          <td>프로필 카드 읽기<br>→ 수정 카드 작성<br>→ 발표</td>
+          <td><span style="color:var(--id)">A:</span> 조용히 앉아 있기 허용 + 시각 단서<br><span style="color:var(--accent)">B:</span> 발표 역할 배정<br><span style="color:var(--lre)">C:</span> 시각 일정표 단계 확인<br><span style="color:var(--gen)">D~G:</span> 또래 학생 대신 설계 역할</td>
+          <td>학생 프로필 카드<br>S.T.E.P. 수정 카드 양식<br>타이머 10분</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 전개 2 -->
+<div class="acc-item">
+  <button class="acc-trigger" onclick="toggleAcc(this)">
+    <span><span class="ph ph-m">전개 2</span>10분 — 또래 역할 배정 및 촉구 기술 연습</span>
+    <span class="acc-arrow">▼</span>
+  </button>
+  <div class="acc-body open">
+    <table class="tbl">
+      <thead><tr><th style="width:13%">단계·시간</th><th style="width:26%">교수자 활동</th><th style="width:18%">학습자 활동</th><th style="width:28%">A·B·C / D·E·F·G 지원</th><th style="width:15%">자료·유의사항</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>촉구 단계 연습</strong><br><small>5분</small></td>
+          <td>촉구 3단계 시연:<br>물리적 촉구(손 잡고) → 언어 촉구("여기에 넣어") → 독립 수행<br>D·E·F·G 학생이 각 단계 실습</td>
+          <td>교수자 따라 촉구 연습</td>
+          <td><span style="color:var(--gen)">D~G:</span> 역할 카드 보며 촉구 기술 연습<br><span style="color:var(--id)">A~C:</span> 촉구 수신자 역할 체험</td>
+          <td>역할 카드 (촉구 단계 요약)</td>
+        </tr>
+        <tr>
+          <td><strong>1:1 짝 배정 확인</strong><br><small>5분</small></td>
+          <td>짝 배치 확인 (D-A, E·F-B, G-C)<br><strong>"D학생이 A를 너무 많이 도와줄 때 어떻게 할까요?"</strong> (열린 발문)<br>최소 촉구 원칙 재확인</td>
+          <td>짝 이동 + 역할 확인<br>과잉 보조 예방 토의</td>
+          <td><span style="color:var(--lre)">C:</span> G학생과 함께 이동, 시각 일정표 확인</td>
+          <td>짝 배치도<br>최소 촉구 원칙 포스터</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 전개 3 -->
+<div class="acc-item">
+  <button class="acc-trigger" onclick="toggleAcc(this)">
+    <span><span class="ph ph-m">전개 3</span>15분 — S.T.E.P. 수정 통합 플로어볼 게임</span>
+    <span class="acc-arrow">▼</span>
+  </button>
+  <div class="acc-body open">
+    <table class="tbl">
+      <thead><tr><th style="width:13%">단계·시간</th><th style="width:26%">교수자 활동</th><th style="width:18%">학습자 활동</th><th style="width:28%">A·B·C / D·E·F·G 지원</th><th style="width:15%">자료·유의사항</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>규칙 안내</strong><br><small>3분</small></td>
+          <td>수정 규칙 시각 카드로 안내:<br>① 오프사이드 없음<br>② A·C 학생: 전용 구역 패스 허용<br>③ 스틱 높이 규정 면제<br>④ 성공 시 전체 격려</td>
+          <td>규칙 카드 확인<br>포지션 이동</td>
+          <td><span style="color:var(--lre)">C:</span> 시각 일정표 단계 표시<br><span style="color:var(--gen)">D~G:</span> 각자 역할 확인</td>
+          <td>수정 규칙 카드 (A4)<br>타이머 15분</td>
+        </tr>
+        <tr>
+          <td><strong>통합 게임 1·2세트</strong><br><small>10분</small></td>
+          <td>교수자 순회 관찰 및 즉각 피드백<br>자기 모니터링 시트 체크 안내<br>A 학생 패스 성공 시 전체 격려 유도<br><strong>"왜 A학생에게 거리를 줄여줬나요?"</strong> (반성적 발문, 세트 사이)</td>
+          <td>통합 플로어볼 게임 수행<br>자기 모니터링 체크</td>
+          <td><span style="color:var(--id)">A:</span> 경량 볼·1.5m 패스, D 1:1 지원<br><span style="color:var(--accent)">B:</span> E·F 교대 지원, 단순 규칙<br><span style="color:var(--lre)">C:</span> 고정 구역, G 시각 예고</td>
+          <td>경량 스펀지 볼<br>짧은 스틱 (A용)<br>자기 모니터링 시트</td>
+        </tr>
+        <tr>
+          <td><strong>세트 사이 점검</strong><br><small>2분</small></td>
+          <td>세트 간 S.T.E.P. 조정 확인 (필요 시 즉각 수정)<br>비장애 학생의 과잉 보조 모니터링</td>
+          <td>물·휴식<br>또래 피드백 교환</td>
+          <td>촉구 단계 재확인</td>
+          <td>수분 보충 기회</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 정리 -->
+<div class="acc-item">
+  <button class="acc-trigger" onclick="toggleAcc(this)">
+    <span><span class="ph ph-c">정리</span>5분 — 3-2-1 성찰 · 강화 · 차시 예고</span>
+    <span class="acc-arrow">▼</span>
+  </button>
+  <div class="acc-body open">
+    <table class="tbl">
+      <thead><tr><th style="width:13%">단계·시간</th><th style="width:26%">교수자 활동</th><th style="width:18%">학습자 활동</th><th style="width:28%">A·B·C / D·E·F·G 지원</th><th style="width:15%">자료·유의사항</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>3-2-1 성찰</strong><br><small>3분</small></td>
+          <td>성찰 카드 배부: 배운 것 3 / 느낀 것 2 / 질문 1. <strong>"오늘 모든 학생이 의미 있는 참여를 했나요?"</strong> (반성적 발문)</td>
+          <td>성찰 카드 작성</td>
+          <td><span style="color:var(--id)">A:</span> 구조화 칸 카드<br><span style="color:var(--lre)">C:</span> 그림·스티커 허용</td>
+          <td>성찰 카드 (인쇄)</td>
+        </tr>
+        <tr>
+          <td><strong>강화·차시 예고</strong><br><small>2분</small></td>
+          <td>전체 긍정 강화 + 개별 칭찬 1문장<br>2차시 예고: LRE 원칙과 통합 유형</td>
+          <td>강화 스티커 수령</td>
+          <td>A·B·C IEP 달성 여부 개별 확인</td>
+          <td>강화 스티커<br>차시 예고 카드</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+  ⑨ 평가 계획
+══════════════════════════════ -->
+<div class="section" id="s09">
+<div class="section-label">SECTION 09 · 평가 계획</div>
+<div class="section-title">평가 계획 — 4요소 + 플로어볼 통합 루브릭</div>
+
+<div class="card-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px">
+  <div class="card" style="text-align:center;background:var(--safe-bg);border-color:rgba(239,68,68,.2)">
+    <div style="font-size:22px;margin-bottom:6px">🎯</div>
+    <div style="font-size:12px;font-weight:900;color:var(--safe);margin-bottom:5px">목표</div>
+    <div style="font-size:11px;color:var(--muted)">IEP 기준<br>개별 설정</div>
+  </div>
+  <div class="card" style="text-align:center;background:rgba(79,143,255,.07);border-color:rgba(79,143,255,.2)">
+    <div style="font-size:22px;margin-bottom:6px">📋</div>
+    <div style="font-size:12px;font-weight:900;color:var(--accent);margin-bottom:5px">방법</div>
+    <div style="font-size:11px;color:var(--muted)">관찰 기록<br>+수행 평가</div>
+  </div>
+  <div class="card" style="text-align:center;background:var(--lre-bg);border-color:rgba(245,158,11,.2)">
+    <div style="font-size:22px;margin-bottom:6px">📏</div>
+    <div style="font-size:12px;font-weight:900;color:var(--lre);margin-bottom:5px">기준</div>
+    <div style="font-size:11px;color:var(--muted)">준거 참조<br>IEP 도달</div>
+  </div>
+  <div class="card" style="text-align:center;background:var(--inc-bg);border-color:rgba(0,201,177,.2)">
+    <div style="font-size:22px;margin-bottom:6px">🔄</div>
+    <div style="font-size:12px;font-weight:900;color:var(--inc);margin-bottom:5px">환류</div>
+    <div style="font-size:11px;color:var(--muted)">IEP 수정<br>차시 반영</div>
+  </div>
+</div>
+
+<div class="sub-title">수행 평가 루브릭 — 통합 플로어볼 (지적장애·비장애 학생 분리 적용)</div>
+<table class="tbl">
+  <thead>
+    <tr><th>평가 대상</th><th>평가 요소</th><th>배점</th><th class="rub-ex">우수 (4점)</th><th class="rub-av">보통 (2~3점)</th><th class="rub-po">미흡 (0~1점)</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3"><strong style="color:var(--id)">지적장애 학생<br>(A·B·C)</strong><br><small style="color:var(--muted)">IEP 준거 참조</small></td>
+      <td>과제 수행 (IEP 목표)</td>
+      <td style="text-align:center;font-weight:700;color:var(--lre)">40점</td>
+      <td class="rub-ex">IEP 목표 완전 달성 (A:패스5회/B:3세트/C:루틴완수)</td>
+      <td class="rub-av">IEP 목표 부분 달성 (50% 이상)</td>
+      <td class="rub-po">IEP 목표 미달 (&lt;50%)</td>
+    </tr>
+    <tr>
+      <td>통합 참여 (또래 상호작용)</td>
+      <td style="text-align:center;font-weight:700;color:var(--lre)">30점</td>
+      <td class="rub-ex">자발적 또래 상호작용 3회 이상</td>
+      <td class="rub-av">촉구 후 상호작용 1~2회</td>
+      <td class="rub-po">상호작용 거부 또는 0회</td>
+    </tr>
+    <tr>
+      <td>안전 행동</td>
+      <td style="text-align:center;font-weight:700;color:var(--lre)">30점</td>
+      <td class="rub-ex">안전 규칙 3가지 이행</td>
+      <td class="rub-av">1~2가지 이행</td>
+      <td class="rub-po">이행 0가지</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong style="color:var(--gen)">비장애 학생<br>(D·E·F·G)</strong><br><small style="color:var(--muted)">또래 지원자 역할</small></td>
+      <td>또래 지원 기술</td>
+      <td style="text-align:center;font-weight:700;color:var(--lre)">40점</td>
+      <td class="rub-ex">촉구 단계 정확 적용, 과잉 보조 없이 독립 수행 유도</td>
+      <td class="rub-av">촉구 단계 부분 적용, 간헐적 과잉 보조</td>
+      <td class="rub-po">촉구 미적용 또는 전체 대행</td>
+    </tr>
+    <tr>
+      <td>S.T.E.P. 수정 적용</td>
+      <td style="text-align:center;font-weight:700;color:var(--lre)">30점</td>
+      <td class="rub-ex">설계한 수정 카드 3개 이상 현장 적용</td>
+      <td class="rub-av">1~2개 적용</td>
+      <td class="rub-po">미적용</td>
+    </tr>
+    <tr>
+      <td>배려·협력 태도</td>
+      <td style="text-align:center;font-weight:700;color:var(--lre)">30점</td>
+      <td class="rub-ex">자발적 긍정 언어 2회↑, 갈등 없음</td>
+      <td class="rub-av">촉구 후 긍정 반응</td>
+      <td class="rub-po">부정적 반응 또는 무시</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 채점기 -->
+<div style="margin-top:18px">
+  <div class="sub-title">🧮 통합 루브릭 채점기</div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <!-- 지적장애 학생 채점 -->
+    <div style="flex:1;min-width:240px;background:var(--id-bg);border:1px solid rgba(251,146,60,.25);border-radius:var(--r);padding:16px">
+      <div style="font-size:12px;font-weight:900;color:var(--id);margin-bottom:12px">🅐 학생 A (지적장애)</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:5px">과제 수행 (IEP)</div>
+      <div style="display:flex;gap:5px;margin-bottom:10px">
+        <button class="btn-sm" style="font-size:10px" onclick="sc('a','t',40)">우수40</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('a','t',25)">보통25</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('a','t',10)">미흡10</button>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:5px">통합 참여</div>
+      <div style="display:flex;gap:5px;margin-bottom:10px">
+        <button class="btn-sm" style="font-size:10px" onclick="sc('a','p',30)">우수30</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('a','p',18)">보통18</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('a','p',5)">미흡5</button>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:5px">안전 행동</div>
+      <div style="display:flex;gap:5px;margin-bottom:12px">
+        <button class="btn-sm" style="font-size:10px" onclick="sc('a','s',30)">우수30</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('a','s',18)">보통18</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('a','s',5)">미흡5</button>
+      </div>
+      <div style="font-weight:700;color:var(--id)">합계: <span id="sc-a">0</span>점</div>
+    </div>
+    <!-- 또래 지원자 채점 -->
+    <div style="flex:1;min-width:240px;background:var(--gen-bg);border:1px solid rgba(52,211,153,.25);border-radius:var(--r);padding:16px">
+      <div style="font-size:12px;font-weight:900;color:var(--gen);margin-bottom:12px">🅓 학생 D (비장애 또래 교수자)</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:5px">또래 지원 기술</div>
+      <div style="display:flex;gap:5px;margin-bottom:10px">
+        <button class="btn-sm" style="font-size:10px" onclick="sc('d','t',40)">우수40</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('d','t',25)">보통25</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('d','t',10)">미흡10</button>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:5px">S.T.E.P. 적용</div>
+      <div style="display:flex;gap:5px;margin-bottom:10px">
+        <button class="btn-sm" style="font-size:10px" onclick="sc('d','p',30)">우수30</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('d','p',18)">보통18</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('d','p',5)">미흡5</button>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:5px">배려·협력</div>
+      <div style="display:flex;gap:5px;margin-bottom:12px">
+        <button class="btn-sm" style="font-size:10px" onclick="sc('d','s',30)">우수30</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('d','s',18)">보통18</button>
+        <button class="btn-sm" style="font-size:10px" onclick="sc('d','s',5)">미흡5</button>
+      </div>
+      <div style="font-weight:700;color:var(--gen)">합계: <span id="sc-d">0</span>점</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+  ⑩ 교수-학습 자료 목록
+══════════════════════════════ -->
+<div class="section" id="s10">
+<div class="section-label">SECTION 10 · 교수-학습 자료 목록</div>
+<div class="section-title">교수-학습 자료 목록 — 기구·교구·디지털·안전</div>
+<table class="tbl">
+  <thead><tr><th>구분</th><th>자료명</th><th>수량</th><th>용도</th><th>학생 배정</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge b-step">기구</span></td><td>플로어볼 스틱 (일반)</td><td>4개</td><td>비장애 학생 + B학생</td><td>D·E·F·G·B</td></tr>
+    <tr><td><span class="badge b-step">기구</span></td><td>플로어볼 스틱 (단축 70%)</td><td>2개</td><td>A·C학생 전용</td><td>A·C</td></tr>
+    <tr><td><span class="badge b-step">기구</span></td><td>경량 스펀지 볼 (100g)</td><td>2개</td><td>A·C학생 경량 볼</td><td>A·C</td></tr>
+    <tr><td><span class="badge b-step">기구</span></td><td>일반 플로어볼</td><td>2개</td><td>B·D·E·F·G 학생</td><td>B팀</td></tr>
+    <tr><td><span class="badge b-step">기구</span></td><td>플로어볼 골대</td><td>2개</td><td>게임 골대 (패딩 부착)</td><td>전체</td></tr>
+    <tr><td><span class="badge b-step">기구</span></td><td>안전 매트</td><td>2장</td><td>골대 주변 낙상 방지</td><td>전체</td></tr>
+    <tr><td><span class="badge b-lre">교구</span></td><td>S.T.E.P. 수정 카드 양식</td><td>학생 수×1</td><td>전개 1 설계 실습</td><td>전체</td></tr>
+    <tr><td><span class="badge b-lre">교구</span></td><td>역할 뱃지 (또래 교수·모델·보조·지원)</td><td>4종</td><td>또래 역할 시각화</td><td>D·E·F·G</td></tr>
+    <tr><td><span class="badge b-lre">교구</span></td><td>학생 프로필 카드 (A·B·C)</td><td>소집단×1</td><td>S.T.E.P. 설계 실습 기초</td><td>소집단</td></tr>
+    <tr><td><span class="badge b-lre">교구</span></td><td>수정 규칙 카드 (A4)</td><td>7장</td><td>통합 게임 규칙 시각화</td><td>전체</td></tr>
+    <tr><td><span class="badge b-lre">교구</span></td><td>자기 모니터링 시트</td><td>7장</td><td>과제 완료 자기 체크</td><td>전체</td></tr>
+    <tr><td><span class="badge b-lre">교구</span></td><td>3-2-1 성찰 카드</td><td>7장</td><td>정리 단계 성찰</td><td>전체</td></tr>
+    <tr><td><span class="badge b-lre">교구</span></td><td>촉구 단계 포스터</td><td>1장</td><td>또래 지원자 참고</td><td>교실 부착</td></tr>
+    <tr><td><span class="badge b-lre">교구</span></td><td>시각 일정표 (4단계)</td><td>1장</td><td>C학생 전환 지원</td><td>C</td></tr>
+    <tr><td><span class="badge b-inc">디지털</span></td><td>타임타이머 (앱)</td><td>1대</td><td>시각적 시간 관리</td><td>전체 (C 개인)</td></tr>
+    <tr><td><span class="badge b-inc">디지털</span></td><td>통합체육 세안 HTML (본 파일)</td><td>1식</td><td>수업 중 시각 보조 (프로젝터)</td><td>교수자</td></tr>
+    <tr><td><span class="badge b-inc">디지털</span></td><td>AI 도구 (Claude/Gemini)</td><td>—</td><td>세안 초안·S.T.E.P. 카드 생성</td><td>교수자</td></tr>
+    <tr><td><span class="badge b-safe">안전</span></td><td>AED</td><td>1대</td><td>응급 심폐소생술</td><td>복도 구급함</td></tr>
+    <tr><td><span class="badge b-safe">안전</span></td><td>바닥 형광 테이프</td><td>1롤</td><td>A·C 전용 구역 표시</td><td>A·C</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ══════════════════════════════
+  ⑪ 통합 유형 탭
+══════════════════════════════ -->
+<div class="section" id="s11">
+<div class="section-label">SECTION 11 · 통합체육 유형 탭</div>
+<div class="section-title">통합체육 3가지 유형 — 완전·부분·역통합</div>
+<div class="tabs">
+  <div class="tab t-full" onclick="switchTab('full',this)">🟢 완전 통합 (Full Inclusion)</div>
+  <div class="tab" onclick="switchTab('part',this)">🟣 부분 통합 (Partial Inclusion)</div>
+  <div class="tab" onclick="switchTab('rev',this)">🟡 역통합 (Reverse Inclusion)</div>
+</div>
+
+<div class="panel active" id="p-full">
+  <div style="background:var(--inc-bg);border:1px solid rgba(0,201,177,.25);border-radius:var(--r);padding:20px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+      <div style="width:40px;height:40px;border-radius:10px;background:rgba(0,201,177,.15);display:flex;align-items:center;justify-content:center;font-size:20px">🤝</div>
+      <div><div style="font-size:16px;font-weight:900;color:var(--inc)">완전 통합 (Full Inclusion)</div><div style="font-size:11px;color:var(--muted)">지적장애 학생이 비장애 또래와 동일 환경에서 전체 수업 참여</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:14px">
+      <div style="background:var(--surface);border-radius:var(--rs);padding:12px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--inc);margin-bottom:6px">적용 조건</div>
+        <div style="font-size:12px;color:var(--muted)">• 경등도 지적장애 (B학생)<br>• 또래 모델링 활용 가능<br>• 과제 수정으로 참여 가능</div>
+      </div>
+      <div style="background:var(--surface);border-radius:var(--rs);padding:12px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--inc);margin-bottom:6px">본시 적용</div>
+        <div style="font-size:12px;color:var(--muted)">• B학생: 단순화 규칙 적용<br>• E·F 또래 모델·보조 배치<br>• 동일 게임, 다른 목표</div>
+      </div>
+      <div style="background:var(--surface);border-radius:var(--rs);padding:12px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--inc);margin-bottom:6px">S.T.E.P. 초점</div>
+        <div style="font-size:12px;color:var(--muted)">• T: 규칙 단순화 우선<br>• P: 또래 모델링<br>• S: 코트 70% 크기</div>
+      </div>
+    </div>
+    <div class="note note-inc">✅ 완전 통합은 LRE 원칙의 최우선 환경. 단, 의미 있는 참여 없는 물리적 통합은 피해야 합니다 (Block, 2016).</div>
+  </div>
+</div>
+
+<div class="panel" id="p-part">
+  <div style="background:var(--peer-bg);border:1px solid rgba(167,139,250,.25);border-radius:var(--r);padding:20px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+      <div style="width:40px;height:40px;border-radius:10px;background:rgba(167,139,250,.15);display:flex;align-items:center;justify-content:center;font-size:20px">🔀</div>
+      <div><div style="font-size:16px;font-weight:900;color:var(--peer)">부분 통합 (Partial Inclusion)</div><div style="font-size:11px;color:var(--muted)">일부 활동만 통합, 나머지는 개별/분리 환경에서 지원</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:14px">
+      <div style="background:var(--surface);border-radius:var(--rs);padding:12px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--peer);margin-bottom:6px">적용 조건</div>
+        <div style="font-size:12px;color:var(--muted)">• 중등도 지적장애 (A학생)<br>• 일부 과제는 개별 지원 필요<br>• 완전 통합 시 지속 실패</div>
+      </div>
+      <div style="background:var(--surface);border-radius:var(--rs);padding:12px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--peer);margin-bottom:6px">본시 적용</div>
+        <div style="font-size:12px;color:var(--muted)">• A학생: 패스 구간 개별 연습<br>→ 성공 후 팀 게임 합류<br>• D 1:1 집중 지원</div>
+      </div>
+      <div style="background:var(--surface);border-radius:var(--rs);padding:12px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--peer);margin-bottom:6px">S.T.E.P. 초점</div>
+        <div style="font-size:12px;color:var(--muted)">• S: 전용 구역<br>• E: 경량 볼<br>• P: D 1:1 전담</div>
+      </div>
+    </div>
+    <div class="note note-peer">🔀 부분 통합은 완전 통합 전 단계로 활용. 개별 구간에서 기술을 익힌 후 팀 게임에 점진적으로 합류시키는 전략이 효과적 (Sherrill, 2004).</div>
+  </div>
+</div>
+
+<div class="panel" id="p-rev">
+  <div style="background:var(--lre-bg);border:1px solid rgba(245,158,11,.25);border-radius:var(--r);padding:20px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+      <div style="width:40px;height:40px;border-radius:10px;background:rgba(245,158,11,.15);display:flex;align-items:center;justify-content:center;font-size:20px">🔄</div>
+      <div><div style="font-size:16px;font-weight:900;color:var(--lre)">역통합 (Reverse Inclusion)</div><div style="font-size:11px;color:var(--muted)">비장애 학생이 특수교육 환경으로 참여하여 함께 수업</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:14px">
+      <div style="background:var(--surface);border-radius:var(--rs);padding:12px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--lre);margin-bottom:6px">적용 조건</div>
+        <div style="font-size:12px;color:var(--muted)">• 자폐성+지적장애 (C학생)<br>• 일반 환경 적응 어려움<br>• 구조화 환경 유지 필요</div>
+      </div>
+      <div style="background:var(--surface);border-radius:var(--rs);padding:12px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--lre);margin-bottom:6px">본시 적용</div>
+        <div style="font-size:12px;color:var(--muted)">• G학생이 C학생의 구조화 구역에 참여<br>• C의 루틴에 G가 맞춤<br>• 소음·자극 최소 환경</div>
+      </div>
+      <div style="background:var(--surface);border-radius:var(--rs);padding:12px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--lre);margin-bottom:6px">S.T.E.P. 초점</div>
+        <div style="font-size:12px;color:var(--muted)">• S: 고정 위치<br>• T: C의 루틴 우선<br>• E: 소음 낮은 기구</div>
+      </div>
+    </div>
+    <div class="note note-lre">🔄 역통합은 C학생처럼 일반 통합 환경 적응이 어려운 경우의 대안. 비장애 학생 G가 장애 이해 교육을 충분히 받은 후 참여해야 함 (교육부, 2023).</div>
+  </div>
+</div>
+
+<!-- 통합 정도 스펙트럼 -->
+<div style="margin-top:20px">
+  <div class="sub-title">통합 정도 스펙트럼 — LRE 연속체</div>
+  <div style="background:var(--surface2);border-radius:var(--r);padding:16px;border:1px solid var(--border)">
+    <div style="display:flex;align-items:center;height:50px;border-radius:25px;overflow:hidden;margin-bottom:12px">
+      <div style="flex:1;height:100%;background:rgba(0,201,177,.25);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--inc)">완전 통합<br><small>(LRE 최우선)</small></div>
+      <div style="flex:1;height:100%;background:rgba(167,139,250,.2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--peer)">부분 통합</div>
+      <div style="flex:1;height:100%;background:rgba(245,158,11,.2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--lre)">역통합</div>
+      <div style="flex:1;height:100%;background:rgba(239,68,68,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--safe)">분리<br><small>(최후 수단)</small></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)">
+      <span>← 비제한적 (Non-restrictive)</span>
+      <span>제한적 (Restrictive) →</span>
+    </div>
+    <div class="note note-lre" style="margin-top:10px">⚖ 본시 적용: B학생(완전 통합) → A학생(부분 통합) → C학생(역통합). 각 학생의 IEP와 기능 수준에 따라 연속체상 적정 위치를 선택합니다.</div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+  ⑫ 자기 검증
+══════════════════════════════ -->
+<div class="section" id="s12">
+<div class="section-label">SECTION 12 · 세안 작성 주요 사항 & 자기검증</div>
+<div class="section-title">통합체육 세안 작성 주요 사항 — 필수 & 주의</div>
+
+<div class="two-col" style="margin-bottom:24px">
+  <div>
+    <div class="sub-title">✅ 절대 빠지면 안 되는 필수 항목 7가지</div>
+    <div class="req-grid">
+      <div class="req-item" onclick="toggleReq(this)"><div class="req-num">1</div><div class="req-text">LRE 원칙 + 통합 유형 명시 (완전·부분·역통합)</div><div class="req-chk">✓</div></div>
+      <div class="req-item" onclick="toggleReq(this)"><div class="req-num">2</div><div class="req-text">학생별 IEP 목표 + S.T.E.P. 수정 계획</div><div class="req-chk">✓</div></div>
+      <div class="req-item" onclick="toggleReq(this)"><div class="req-num">3</div><div class="req-text">비장애 학생 또래 역할 배정 명시</div><div class="req-chk">✓</div></div>
+      <div class="req-item" onclick="toggleReq(this)"><div class="req-num">4</div><div class="req-text">안전·응급 계획 (통합 환경 특화, 2줄↑)</div><div class="req-chk">✓</div></div>
+      <div class="req-item" onclick="toggleReq(this)"><div class="req-num">5</div><div class="req-text">열린 발문 + 반성적 발문 각 1개 이상</div><div class="req-chk">✓</div></div>
+      <div class="req-item" onclick="toggleReq(this)"><div class="req-num">6</div><div class="req-text">장애·비장애 학생 분리 평가 루브릭</div><div class="req-chk">✓</div></div>
+      <div class="req-item" onclick="toggleReq(this)"><div class="req-num">7</div><div class="req-text">시간 배분 도입5/전개35/정리5 명시</div><div class="req-chk">✓</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="sub-title">🚨 통합체육 세안 빈번한 실수 TOP 5</div>
+    <div class="mistake-list">
+      <div class="mist-item"><div class="mist-num">1</div><div><div class="mist-t">물리적 통합 ≠ 의미 있는 참여</div><div class="mist-c">같은 공간에 있어도 과제 연계 없으면 통합 아님 → 동일 과제·다른 목표 원칙 적용</div></div></div>
+      <div class="mist-item"><div class="mist-num">2</div><div><div class="mist-t">또래 역할 배정 없이 "함께 하기"</div><div class="mist-c">역할 미명시 → 비장애 학생 혼란 + 과잉 보조 → 지원자 역할 4종 구조화 필수</div></div></div>
+      <div class="mist-item"><div class="mist-num">3</div><div><div class="mist-t">S.T.E.P. 수정 1~2개에 그침</div><div class="mist-c">"볼만 바꿔줬다" ❌ → Space·Task·Equipment·People 4요소 모두 검토 필수</div></div></div>
+      <div class="mist-item"><div class="mist-num">4</div><div><div class="mist-t">비장애 학생 학습 목표 누락</div><div class="mist-c">또래 지원자도 학습자 → 또래 지원 기술·배려 태도 평가 루브릭 포함 필수</div></div></div>
+      <div class="mist-item"><div class="mist-num">5</div><div><div class="mist-t">안전 계획 장애 학생만 대상</div><div class="mist-c">통합 환경에서 비장애 학생 공황·갈등 대응도 안전 계획에 포함해야 함</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">모의수업 제출 전 자기검증 체크리스트 (통합체육 버전)</div>
+<div class="pb-wrap"><div class="pb" id="inc-pb"></div></div>
+<div class="pb-lbl" id="inc-pb-lbl">0 / 12 항목 완료</div>
+<div class="checklist" style="margin-top:12px">
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">1. 단원명 → 제재명 → 본시 주제 계층 연결 (통합체육 명시)</div></div>
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">2. 학습 목표 심동·인지·정의 3영역 + 장애·비장애 분리 목표</div></div>
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">3. LRE 원칙 + 통합 유형 (완전·부분·역통합) 명시</div></div>
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">4. 학생별 IEP 목표 수치 명시 (A·B·C)</div></div>
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">5. S.T.E.P. 수정 카드 (4요소 모두 적용)</div></div>
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">6. 비장애 학생 또래 역할 배정 (4종 구조화)</div></div>
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">7. 도입·전개·정리 시간 배분 (합계 45분)</div></div>
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">8. 열린 발문·반성적 발문 각 1개↑ (따옴표 기술)</div></div>
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">9. 안전·응급 계획 (통합 환경 특화, 4가지 상황)</div></div>
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">10. 평가 루브릭 (장애·비장애 분리 기준)</div></div>
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">11. AI 도구 활용 계획 명시 (S.T.E.P. 카드 생성 등)</div></div>
+  <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box"></div><div class="cl-text">12. 분량 최소 10쪽 이상 + 교수-학습 자료 목록</div></div>
+</div>
+<div id="inc-complete" style="display:none;margin-top:14px;padding:16px 20px;border-radius:var(--r);background:var(--inc-bg);border:1px solid rgba(0,201,177,.35);text-align:center;font-weight:700;color:var(--inc)">
+  🎉 자기검증 완료! 통합체육 세안 제출 준비가 완료되었습니다.
+</div>
+</div>
+
+<!-- ══════════════════════════════
+  ⑬ Henry & Rogers + 병렬처리 (통합 맥락)
+══════════════════════════════ -->
+<div class="section" id="s13">
+<div class="section-label">SECTION 13 · 이론적 배경</div>
+<div class="section-title">Henry &amp; Rogers (1960) 병렬적 분산 처리 — 통합체육 적용</div>
+
+<div style="background:var(--surface2);border-radius:var(--r);padding:20px 24px;border:1px solid var(--border);margin-bottom:20px">
+  <div style="display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap">
+    <div style="flex:2;min-width:240px">
+      <div style="font-size:10px;font-weight:700;color:var(--inc);letter-spacing:.1em;margin-bottom:7px">HENRY &amp; ROGERS (1960) · RESEARCH QUARTERLY 31(3)</div>
+      <div style="font-family:'Noto Serif KR',serif;font-size:15px;font-weight:700;margin-bottom:10px;line-height:1.5">"기억 드럼 이론 — 복잡한 운동일수록 병렬 처리 채널 확보가 반응 잠시를 단축"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.85">통합체육 환경은 ADHD·지적장애 세안보다 <strong>처리 복잡도가 현저히 높다.</strong> 장애 학생은 또래 지원자의 촉구·게임 규칙·기구 수정을 동시에 처리해야 하며, 비장애 학생은 또래 지원 역할·게임 수행·배려 태도를 병렬적으로 처리해야 한다. Henry &amp; Rogers(1960)의 기억 드럼 이론에 따르면, 처리 채널 수가 증가할수록 <strong>과제 단위를 짧게 구조화</strong>하고 <strong>채널 우선순위를 명료화</strong>해야 반응 잠시를 최소화할 수 있다.</p>
+    </div>
+    <div style="flex:1;min-width:190px;background:var(--bg);border-radius:var(--rs);padding:15px;border:1px solid var(--border)">
+      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:9px">통합 환경 처리 부하 추가 요인</div>
+      <div style="font-size:12px;line-height:1.85">
+        <div style="padding:5px 0;border-bottom:1px solid var(--border)">① 또래 상호작용 (사회적 처리 추가)</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border)">② 역할 전환 (지원자↔수행자)</div>
+        <div style="padding:5px 0;border-bottom:1px solid var(--border)">③ 수정 규칙 이해 (인지 부하↑)</div>
+        <div style="padding:5px 0">④ 감정·배려 조절 (정의적 처리)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 통합체육 병렬처리 레이어 -->
+<div class="sub-title">통합체육 병렬적 분산 처리 레이어 모델</div>
+<div style="background:var(--surface2);border-radius:var(--r);padding:18px;border:1px solid var(--border);margin-bottom:16px">
+
+  <!-- Layer 1 -->
+  <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;margin-bottom:8px">LAYER 1 — 다중 입력 채널 (통합 환경 특화)</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:7px;margin-bottom:12px">
+    <div style="background:rgba(0,201,177,.08);border-radius:var(--rs);padding:11px;text-align:center;border:1px solid rgba(0,201,177,.2)">
+      <div style="font-size:18px;margin-bottom:5px">👂</div><div style="font-size:10px;font-weight:700;color:var(--inc)">청각</div><div style="font-size:10px;color:var(--muted)">지시·피드백<br>또래 격려</div>
+    </div>
+    <div style="background:rgba(245,158,11,.08);border-radius:var(--rs);padding:11px;text-align:center;border:1px solid rgba(245,158,11,.2)">
+      <div style="font-size:18px;margin-bottom:5px">👁</div><div style="font-size:10px;font-weight:700;color:var(--lre)">시각</div><div style="font-size:10px;color:var(--muted)">규칙 카드<br>타이머·표시</div>
+    </div>
+    <div style="background:rgba(167,139,250,.08);border-radius:var(--rs);padding:11px;text-align:center;border:1px solid rgba(167,139,250,.2)">
+      <div style="font-size:18px;margin-bottom:5px">🤲</div><div style="font-size:10px;font-weight:700;color:var(--peer)">신체 촉구</div><div style="font-size:10px;color:var(--muted)">또래 교수<br>보조 단계</div>
+    </div>
+    <div style="background:rgba(79,143,255,.08);border-radius:var(--rs);padding:11px;text-align:center;border:1px solid rgba(79,143,255,.2)">
+      <div style="font-size:18px;margin-bottom:5px">🌍</div><div style="font-size:10px;font-weight:700;color:var(--accent)">환경</div><div style="font-size:10px;color:var(--muted)">테이프·구역<br>S.T.E.P. 수정</div>
+    </div>
+    <div style="background:rgba(52,211,153,.08);border-radius:var(--rs);padding:11px;text-align:center;border:1px solid rgba(52,211,153,.2)">
+      <div style="font-size:18px;margin-bottom:5px">💬</div><div style="font-size:10px;font-weight:700;color:var(--gen)">사회적</div><div style="font-size:10px;color:var(--muted)">또래 상호작용<br>협동 신호</div>
+    </div>
+  </div>
+
+  <!-- Layer 2 -->
+  <div style="text-align:center;padding:7px;font-size:12px;color:var(--muted)">↓ 병렬 수렴 처리 (기억 드럼 인출) — Henry &amp; Rogers (1960)</div>
+
+  <!-- Layer 3: 학생별 처리 차이 -->
+  <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;margin:10px 0 8px">LAYER 2 — 학생 유형별 처리 용량 차이</div>
+  <table class="tbl">
+    <thead><tr><th>학생</th><th>유형</th><th>주요 처리 과부하 요인</th><th>설계 전략</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--id);font-weight:700">A</td><td>지적장애 중등도</td><td>청각·시각 동시 처리 어려움 → 지시 망각</td><td>채널 1~2개 제한, 시각 채널 우선, D 1:1 병렬 보조</td></tr>
+      <tr><td style="color:var(--accent);font-weight:700">B</td><td>지적장애 경등도</td><td>규칙 처리+협동 처리 동시 → 인지 과부하</td><td>규칙 2가지로 단순화, 역할 카드 시각화, 단계적 확장</td></tr>
+      <tr><td style="color:var(--lre);font-weight:700">C</td><td>자폐성+지적장애</td><td>사회적 채널 처리 실패 → 상동 급증</td><td>사회적 채널 제거, 시각 루틴만 유지, G와 1:1 병렬 처리</td></tr>
+      <tr><td style="color:var(--gen);font-weight:700">D~G</td><td>비장애 또래 지원자</td><td>역할 수행+게임+배려 3채널 동시 → 혼란</td><td>역할 카드 명료화, 역할 전환 없이 고정, 단계별 책임 증가</td></tr>
+    </tbody>
+  </table>
+
+  <div style="text-align:center;padding:7px;font-size:12px;color:var(--muted)">↓ 효율적 운동 출력 + 의미 있는 통합 참여</div>
+  <div style="background:rgba(0,201,177,.08);border-radius:var(--rs);padding:11px 16px;border:1px solid rgba(0,201,177,.2);text-align:center;font-size:12px">
+    <strong style="color:var(--inc)">통합 설계 결과:</strong> 병렬 채널 최적화 → 반응 잠시 단축 → 지적장애 학생 IEP 목표 도달 + 비장애 학생 또래 지원 기술 습득 동시 달성
+  </div>
+</div>
+
+<!-- 본시 처리 부하표 -->
+<div class="sub-title">본시 단계별 병렬 처리 채널 배치표 (통합 환경)</div>
+<table class="tbl">
+  <thead><tr><th>단계</th><th>시간</th><th>청각</th><th>시각</th><th>신체</th><th>환경</th><th>사회적</th><th>처리 부하</th></tr></thead>
+  <tbody>
+    <tr><td><strong>도입</strong></td><td>5분</td><td>이름 호명</td><td>목표 카드</td><td>집중 루틴</td><td>역할 뱃지</td><td>짝 이동</td><td style="text-align:center;color:var(--inc);font-weight:700">낮음 (2~3채널)</td></tr>
+    <tr><td><strong>전개 1</strong></td><td>10분</td><td>발문·토의</td><td>프로필 카드</td><td>카드 작성</td><td>소집단 배치</td><td>소집단 토의</td><td style="text-align:center;color:var(--lre);font-weight:700">중간 (3~4채널)</td></tr>
+    <tr><td><strong>전개 2</strong></td><td>10분</td><td>촉구 지시</td><td>역할 카드</td><td>촉구 연습</td><td>짝 배치</td><td>1:1 상호작용</td><td style="text-align:center;color:var(--safe);font-weight:700">높음 (4채널)</td></tr>
+    <tr><td><strong>전개 3</strong></td><td>15분</td><td>게임 피드백</td><td>타이머·규칙</td><td>플로어볼</td><td>구역·테이프</td><td>팀 상호작용</td><td style="text-align:center;color:var(--safe);font-weight:700">최고 (5채널)</td></tr>
+    <tr><td><strong>정리</strong></td><td>5분</td><td>성찰 발문</td><td>성찰 카드</td><td>카드 작성</td><td>좌석 복귀</td><td>— (개인 성찰)</td><td style="text-align:center;color:var(--inc);font-weight:700">낮음 (2채널)</td></tr>
+  </tbody>
+</table>
+<div class="note note-inc" style="margin-top:10px">📐 통합체육은 최대 5채널(청각·시각·신체·환경·사회적)이 동시 활성화되므로, 지적장애 학생에게는 채널 수를 1~2개로 제한하고, 또래 지원자가 나머지 채널을 대신 처리하도록 역할을 구조화합니다. (Henry &amp; Rogers, 1960)</div>
+</div>
+
+<!-- ══════════════════════════════
+  ⑭ 동료 평가
+══════════════════════════════ -->
+<div class="section" id="s14">
+<div class="section-label">SECTION 14 · 수업 시연 동료 평가</div>
+<div class="section-title">동료 평가자 수업 시연 측정 시스템 — 통합체육 버전</div>
+
+<div class="note note-peer" style="margin-bottom:18px">🎯 통합체육 동료 평가는 병렬적 분산 처리(Henry &amp; Rogers, 1960) 기반 수업 설계 구현 수준과 통합체육 4원칙(LRE·S.T.E.P.·또래 지원·IEP 연계) 적용 여부를 3인 동료 평가자가 독립 병렬 측정합니다.</div>
+
+<!-- 3인 구조 -->
+<div class="ev3-grid">
+  <div style="background:var(--inc-bg);border:1px solid rgba(0,201,177,.25);border-radius:var(--r);padding:16px;text-align:center">
+    <div style="font-size:22px;margin-bottom:7px">👨‍🏫</div>
+    <div style="font-size:12px;font-weight:900;color:var(--inc)">평가자 1</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:6px">S.T.E.P. 적용 정확성<br>IEP 연계 여부<br>통합 유형 선택 적절성</div>
+  </div>
+  <div style="background:var(--peer-bg);border:1px solid rgba(167,139,250,.25);border-radius:var(--r);padding:16px;text-align:center">
+    <div style="font-size:22px;margin-bottom:7px">🔍</div>
+    <div style="font-size:12px;font-weight:900;color:var(--peer)">평가자 2</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:6px">또래 지원 역할 구조화<br>촉구 단계 적용<br>발문 기술</div>
+  </div>
+  <div style="background:var(--lre-bg);border:1px solid rgba(245,158,11,.25);border-radius:var(--r);padding:16px;text-align:center">
+    <div style="font-size:22px;margin-bottom:7px">🛡</div>
+    <div style="font-size:12px;font-weight:900;color:var(--lre)">평가자 3</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:6px">안전 계획 실행<br>병렬 채널 구현<br>시간 배분 준수</div>
+  </div>
+</div>
+
+<!-- 루브릭 -->
+<div class="sub-title">수업 시연 동료 평가 루브릭 — 통합체육 (100점)</div>
+<table class="tbl" style="margin-bottom:16px">
+  <thead>
+    <tr><th style="width:22%">평가 영역</th><th style="width:8%">배점</th><th style="width:23%">4점 우수</th><th style="width:23%">2~3점 보통</th><th style="width:24%">0~1점 미흡</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>① S.T.E.P. 적용 정확성</strong><br><small style="color:var(--muted)">4요소 + IEP 연계</small></td>
+      <td style="text-align:center;font-weight:700;color:var(--lre);font-size:15px">25점</td>
+      <td class="rub-ex">S·T·E·P 4요소 모두 적용하고 각 학생 IEP 목표와 명시적 연계</td>
+      <td class="rub-av">2~3요소 적용, IEP 연계 일부</td>
+      <td class="rub-po">1요소 이하 적용, IEP 미연계</td>
+    </tr>
+    <tr>
+      <td><strong>② 또래 지원 구조화</strong><br><small style="color:var(--muted)">역할 배정 + 촉구 단계</small></td>
+      <td style="text-align:center;font-weight:700;color:var(--lre);font-size:15px">20점</td>
+      <td class="rub-ex">4종 역할 명확 배정, 촉구 3단계 정확 적용, 과잉 보조 없음</td>
+      <td class="rub-av">역할 배정 있으나 촉구 단계 혼선</td>
+      <td class="rub-po">역할 미배정 또는 전체 대행</td>
+    </tr>
+    <tr>
+      <td><strong>③ 통합 유형 적용</strong><br><small style="color:var(--muted)">LRE 원칙 + 유형 선택</small></td>
+      <td style="text-align:center;font-weight:700;color:var(--lre);font-size:15px">20점</td>
+      <td class="rub-ex">각 학생(A·B·C) 기능 수준에 맞는 통합 유형(완전·부분·역통합) 정확 적용</td>
+      <td class="rub-av">2명 적합, 1명 부적합</td>
+      <td class="rub-po">유형 구분 없이 일괄 적용</td>
+    </tr>
+    <tr>
+      <td><strong>④ 발문 기술</strong><br><small style="color:var(--muted)">열린·닫힌·반성적 혼용</small></td>
+      <td style="text-align:center;font-weight:700;color:var(--lre);font-size:15px">15점</td>
+      <td class="rub-ex">열린+반성적 발문 각 1개↑, 닫힌 발문 1개↑ 혼용, 사고 확장 성공</td>
+      <td class="rub-av">열린·닫힌 혼용하나 반성적 발문 없음</td>
+      <td class="rub-po">닫힌 발문만 또는 발문 없음</td>
+    </tr>
+    <tr>
+      <td><strong>⑤ 병렬 채널 구현</strong><br><small style="color:var(--muted)">Henry &amp; Rogers, 1960</small></td>
+      <td style="text-align:center;font-weight:700;color:var(--lre);font-size:15px">10점</td>
+      <td class="rub-ex">단계별 처리 부하 조절 (도입 낮음→전개 최고→정리 낮음) 명확히 구현</td>
+      <td class="rub-av">처리 부하 조절 일부 적용</td>
+      <td class="rub-po">단일 채널 또는 조절 없음</td>
+    </tr>
+    <tr>
+      <td><strong>⑥ 안전·시간 관리</strong></td>
+      <td style="text-align:center;font-weight:700;color:var(--lre);font-size:15px">10점</td>
+      <td class="rub-ex">안전 계획 4가지 실행 + 45분 배분 준수 (±2분)</td>
+      <td class="rub-av">안전 2가지↑ + 시간 이탈 1단계</td>
+      <td class="rub-po">안전 생략 또는 전개 35분 초과</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 실시간 채점기 -->
+<div class="sub-title">🧮 동료 평가 실시간 채점기</div>
+<div style="background:var(--surface2);border-radius:var(--r);padding:18px;border:1px solid var(--border)">
+
+  <div style="display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap">
+    <div style="font-size:11px;font-weight:700;color:var(--muted);display:flex;align-items:center;margin-right:4px">평가자:</div>
+    <button class="btn-sm" id="ib1" onclick="selEv(1)" style="background:var(--inc-bg);border-color:var(--inc);color:var(--inc)">평가자 1</button>
+    <button class="btn-sm" id="ib2" onclick="selEv(2)">평가자 2</button>
+    <button class="btn-sm" id="ib3" onclick="selEv(3)">평가자 3</button>
+  </div>
+
+  <div style="display:grid;gap:10px">
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:12px;font-weight:700">① S.T.E.P. 적용 정확성</span><span style="font-size:15px;font-weight:900;color:var(--lre)" id="ip1">0</span><span style="font-size:11px;color:var(--muted)">/25</span></div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap">
+        <button class="btn-sm" style="font-size:11px" onclick="isc(1,25)">우수 25</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(1,18)">보통+ 18</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(1,12)">보통- 12</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(1,5)">미흡 5</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(1,0)">0</button>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:12px;font-weight:700">② 또래 지원 구조화</span><span style="font-size:15px;font-weight:900;color:var(--lre)" id="ip2">0</span><span style="font-size:11px;color:var(--muted)">/20</span></div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap">
+        <button class="btn-sm" style="font-size:11px" onclick="isc(2,20)">우수 20</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(2,14)">보통+ 14</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(2,8)">보통- 8</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(2,2)">미흡 2</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(2,0)">0</button>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:12px;font-weight:700">③ 통합 유형 적용 (LRE)</span><span style="font-size:15px;font-weight:900;color:var(--lre)" id="ip3">0</span><span style="font-size:11px;color:var(--muted)">/20</span></div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap">
+        <button class="btn-sm" style="font-size:11px" onclick="isc(3,20)">우수 20</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(3,14)">보통+ 14</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(3,8)">보통- 8</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(3,2)">미흡 2</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(3,0)">0</button>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:12px;font-weight:700">④ 발문 기술 (열린+반성적+닫힌)</span><span style="font-size:15px;font-weight:900;color:var(--lre)" id="ip4">0</span><span style="font-size:11px;color:var(--muted)">/15</span></div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap">
+        <button class="btn-sm" style="font-size:11px" onclick="isc(4,15)">우수 15</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(4,10)">보통+ 10</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(4,5)">보통- 5</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(4,0)">0</button>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:12px;font-weight:700">⑤ 병렬 채널 구현 (Henry &amp; Rogers)</span><span style="font-size:15px;font-weight:900;color:var(--lre)" id="ip5">0</span><span style="font-size:11px;color:var(--muted)">/10</span></div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap">
+        <button class="btn-sm" style="font-size:11px" onclick="isc(5,10)">완전 10</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(5,6)">부분 6</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(5,2)">미흡 2</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(5,0)">0</button>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:12px;font-weight:700">⑥ 안전·시간 관리</span><span style="font-size:15px;font-weight:900;color:var(--lre)" id="ip6">0</span><span style="font-size:11px;color:var(--muted)">/10</span></div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap">
+        <button class="btn-sm" style="font-size:11px" onclick="isc(6,10)">완전 10</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(6,6)">부분 6</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(6,2)">미흡 2</button>
+        <button class="btn-sm" style="font-size:11px" onclick="isc(6,0)">0</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:14px;background:var(--bg);border-radius:var(--rs);padding:14px;border:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+    <div><div style="font-size:11px;color:var(--muted);margin-bottom:3px">총점</div>
+      <div class="score-disp" id="inc-total">0</div>
+      <div style="font-size:11px;color:var(--muted)">/ 100점</div>
+    </div>
+    <div id="inc-verdict" style="font-size:13px;font-weight:700;padding:10px 18px;border-radius:var(--rs);background:var(--surface);border:1px solid var(--border)">채점 후 판정</div>
+    <button class="btn-sm" onclick="resetInc()">↺ 초기화</button>
+  </div>
+</div>
+
+<!-- 피드백 양식 -->
+<div style="margin-top:18px">
+  <div class="sub-title">동료 평가 피드백 기록 양식 (통합체육 특화)</div>
+  <table class="tbl">
+    <thead><tr><th style="width:22%">영역</th><th style="width:39%">잘한 점 (Strength)</th><th style="width:39%">개선 제안 (Development)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>S.T.E.P. 적용</strong><br><small style="color:var(--muted)">4요소 + IEP 연계</small></td>
+        <td><textarea style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:6px;font-family:inherit;font-size:12px;resize:vertical;min-height:60px" placeholder="예) A학생에게 경량 볼+거리 단축(E+S) 두 요소를 동시 적용하여 IEP 패스 목표와 정확히 연계한 점이 인상적이었습니다."></textarea></td>
+        <td><textarea style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:6px;font-family:inherit;font-size:12px;resize:vertical;min-height:60px" placeholder="예) B학생의 Task 수정이 규칙 1가지에 그쳤습니다. IEP 팀 게임 목표를 위해 역할 카드(P 요소)를 추가로 제공해보세요."></textarea></td>
+      </tr>
+      <tr>
+        <td><strong>또래 지원 구조화</strong></td>
+        <td><textarea style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:6px;font-family:inherit;font-size:12px;resize:vertical;min-height:60px" placeholder="잘한 점 기록"></textarea></td>
+        <td><textarea style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:6px;font-family:inherit;font-size:12px;resize:vertical;min-height:60px" placeholder="예) D학생이 A를 과잉 보조하는 장면이 있었습니다. '기다리기' 전략을 사전에 더 강조해보세요."></textarea></td>
+      </tr>
+      <tr>
+        <td><strong>통합 유형·발문·안전</strong></td>
+        <td><textarea style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:6px;font-family:inherit;font-size:12px;resize:vertical;min-height:60px" placeholder="잘한 점 기록"></textarea></td>
+        <td><textarea style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:6px;font-family:inherit;font-size:12px;resize:vertical;min-height:60px" placeholder="개선 제안 기록"></textarea></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note note-peer" style="margin-top:10px">📋 평가 절차: ① 시연 관찰(45분) → ② 3인 독립 채점(5분) → ③ 합산·평균(3분) → ④ 피드백 공유(5분) → ⑤ 시연자 반성 보고서 → ⑥ IEP·S.T.E.P. 수정 반영 (Block, 2016; CAST, 2018)</div>
+</div>
+</div>
+
+<!-- ══════════════════════════════
+  참고문헌
+══════════════════════════════ -->
+<div class="section" id="s-ref">
+<div class="section-label">SECTION 15 · 참고문헌</div>
+<div class="section-title">참고문헌 (APA 7판)</div>
+<ol class="ref-list">
+  <li>American Psychiatric Association. (2013). <em>Diagnostic and statistical manual of mental disorders</em> (5th ed.). American Psychiatric Publishing. <a href="https://doi.org/10.1176/appi.books.9780890425596" target="_blank">https://doi.org/10.1176/appi.books.9780890425596</a></li>
+  <li>Block, M. E. (2016). <em>A teacher's guide to including students with disabilities in general physical education</em> (4th ed.). Paul H. Brookes.</li>
+  <li>CAST. (2018). <em>Universal design for learning guidelines version 2.2</em>. CAST. <a href="https://udlguidelines.cast.org" target="_blank">https://udlguidelines.cast.org</a></li>
+  <li>Henry, F. M., &amp; Rogers, D. E. (1960). Increased response latency for complicated movements and a "memory drum" theory of neuromotor reaction. <em>Research Quarterly</em>, 31(3), 448–458.</li>
+  <li>Individuals with Disabilities Education Act (IDEA). (2004). <em>Individuals with Disabilities Education Improvement Act of 2004</em>. 20 U.S.C. § 1400.</li>
+  <li>Klavina, A., &amp; Block, M. E. (2008). The effect of peer tutoring on interaction behaviors in inclusive physical education. <em>Adapted Physical Activity Quarterly</em>, 25(2), 132–158. <a href="https://doi.org/10.1123/apaq.25.2.132" target="_blank">https://doi.org/10.1123/apaq.25.2.132</a></li>
+  <li>Sherrill, C. (2004). <em>Adapted physical activity, recreation and sport: Cross disciplinary and lifespan</em> (6th ed.). McGraw-Hill.</li>
+  <li>교육부. (2022). <em>체육과 교육과정</em> (교육부 고시 제2022-33호 [별책 11]). 교육부.</li>
+  <li>교육부. (2023). <em>제6차 특수교육 발전 5개년 계획(2023–2027)</em>. 교육부.</li>
+  <li>교육부. (2023). <em>특수교육 교수·학습 자료: 체육과 적응체육 지도 방안</em>. 국립특수교육원.</li>
+  <li>한국특수체육학회. (2023). <em>특수체육 교수·학습 지도안 작성 매뉴얼</em>. 한국특수체육학회.</li>
+  <li>이재원, 박재현. (2019). ADHD 아동의 체육수업 참여 행동 특성 분석. <em>한국특수체육학회지</em>, 27(3), 1–18. <a href="https://doi.org/10.17006/kjapa.2019.27.3.1" target="_blank">https://doi.org/10.17006/kjapa.2019.27.3.1</a></li>
+  <li>국가교육과정정보센터. (2022). <em>2022 개정 교육과정 총론: 핵심역량 및 교수·학습 방향</em>. 교육부. https://ncic.re.kr</li>
+</ol>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// NAV
+function goTo(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'})}
+
+// ACCORDION
+function toggleAcc(btn){
+  var body=btn.nextElementSibling,arr=btn.querySelector('.acc-arrow');
+  var open=body.classList.contains('open');
+  body.classList.toggle('open',!open);
+  arr.style.transform=open?'':'rotate(180deg)';
+}
+
+// IEP DETAIL
+function toggleDetail(id){
+  var r=document.getElementById(id);
+  r.style.display=r.style.display==='none'?'table-row':'none';
+}
+
+// TABS
+function switchTab(t,el){
+  ['full','part','rev'].forEach(x=>document.getElementById('p-'+x).classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(tb=>tb.classList.remove('t-full','t-part','t-rev'));
+  document.getElementById('p-'+t).classList.add('active');
+  var cls={full:'t-full',part:'t-part',rev:'t-rev'}[t];
+  el.classList.add(cls);
+}
+
+// RUBRIC SCORER
+var scs={a:{t:0,p:0,s:0},d:{t:0,p:0,s:0}};
+function sc(stu,item,val){
+  scs[stu][item]=val;
+  var tot=Object.values(scs[stu]).reduce((a,b)=>a+b,0);
+  document.getElementById('sc-'+stu).textContent=tot;
+}
+
+// REQ
+function toggleReq(item){item.classList.toggle('rd')}
+
+// CHECKLIST
+function toggleCl(item){
+  item.classList.toggle('done');
+  item.querySelector('.cl-box').textContent=item.classList.contains('done')?'✓':'';
+  var total=document.querySelectorAll('.cl-item').length;
+  var done=document.querySelectorAll('.cl-item.done').length;
+  var pct=Math.round(done/total*100);
+  document.getElementById('inc-pb').style.width=pct+'%';
+  document.getElementById('inc-pb-lbl').textContent=done+' / '+total+' 항목 완료 ('+pct+'%)';
+  document.getElementById('inc-complete').style.display=done===total?'block':'none';
+}
+
+// PEER EVAL
+var iScores={1:0,2:0,3:0,4:0,5:0,6:0};
+function selEv(n){
+  [1,2,3].forEach(i=>{var b=document.getElementById('ib'+i);b.style.background='';b.style.borderColor='';b.style.color='';});
+  var cols={1:'var(--inc)',2:'var(--peer)',3:'var(--lre)'};
+  var b=document.getElementById('ib'+n);
+  b.style.background='rgba(0,201,177,.15)';b.style.borderColor=cols[n];b.style.color=cols[n];
+}
+function isc(item,val){
+  iScores[item]=val;
+  document.getElementById('ip'+item).textContent=val;
+  var tot=Object.values(iScores).reduce((a,b)=>a+b,0);
+  document.getElementById('inc-total').textContent=tot;
+  var v=document.getElementById('inc-verdict');
+  if(tot>=90){v.textContent='🏆 우수 — 즉시 제출 가능';v.style.color='var(--inc)';v.style.borderColor='rgba(0,201,177,.4)';}
+  else if(tot>=75){v.textContent='✅ 양호 — 소폭 수정 후 제출';v.style.color='var(--accent)';v.style.borderColor='rgba(79,143,255,.4)';}
+  else if(tot>=60){v.textContent='⚠ 보통 — 통합 전략 보완 필요';v.style.color='var(--lre)';v.style.borderColor='rgba(245,158,11,.4)';}
+  else{v.textContent='❌ 미흡 — 세안 재구성 필요';v.style.color='var(--safe)';v.style.borderColor='rgba(239,68,68,.4)';}
+}
+function resetInc(){
+  iScores={1:0,2:0,3:0,4:0,5:0,6:0};
+  [1,2,3,4,5,6].forEach(i=>document.getElementById('ip'+i).textContent='0');
+  document.getElementById('inc-total').textContent='0';
+  var v=document.getElementById('inc-verdict');v.textContent='채점 후 판정';v.style.color='';v.style.borderColor='';
+}
+</script>
+</body>
+</html>
