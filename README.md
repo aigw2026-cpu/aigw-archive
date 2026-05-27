@@ -51,9 +51,22 @@ aigw-archive/
 6. **작품 파일 첨부** (HTML, PDF, 이미지 등, 최대 10MB)
 7. 제출 클릭 → Google Drive에 자동 저장 완료
 
-### 3단계 — 제출 확인
+### 3단계 — 또는 Google Drive에 직접 업로드
 
-제출 후 Google에서 자동으로 확인 이메일이 발송됩니다.
+> 폼 제출이 어렵거나 파일만 먼저 올리고 싶을 경우 Drive에 직접 업로드할 수 있습니다.
+
+📁 **학생 작품 Drive 폴더 (직접 업로드)**
+https://drive.google.com/drive/folders/1m223px5YDwmVg5ISPkmCqD4OhwTWP8YEFwbK08jY1dx9yt5K0gDBhooJY8hF-TwX-ls-tu3U?usp=sharing
+
+업로드 방법:
+1. 위 링크 클릭
+2. Google 계정으로 로그인
+3. 파일을 드래그앤드롭 또는 [+ 새로 만들기] → [파일 업로드] 클릭
+4. 업로드 완료 후 동의 폼도 별도 제출 권장
+
+### 4단계 — 제출 확인
+
+폼 제출 시 Google에서 자동으로 확인 이메일이 발송됩니다.
 
 ---
 
@@ -62,6 +75,7 @@ aigw-archive/
 | 항목 | 링크 |
 |------|------|
 | 📄 아카이브 사이트 | https://aigw2026-cpu.github.io/aigw-archive/ |
+| 📁 학생 작품 Drive 폴더 | https://drive.google.com/drive/folders/1m223px5YDwmVg5ISPkmCqD4OhwTWP8YEFwbK08jY1dx9yt5K0gDBhooJY8hF-TwX-ls-tu3U?usp=sharing |
 | 📁 강의자료 업로드 (교수 전용) | https://github.com/aigw2026-cpu/aigw-archive/upload/main |
 
 ---
